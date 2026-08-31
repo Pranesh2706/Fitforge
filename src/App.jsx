@@ -36,6 +36,8 @@ import Programdetails from "./pages/Programdetails/Programdetails";
 import Exercisedetails from "./pages/Exercisedetails/Exercisedetails";
 import Checkout from "./pages/Checkout/Checkout";
 import PaymentSuccess from "./pages/PaymentSuccess/PaymentSuccess";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import Contact from "./components/Contact/Contact";
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
@@ -47,7 +49,7 @@ function App() {
 
       {/* Navbar stays on every page */}
       <Navbar />
-
+      <ScrollToTop />
       {/* Pages */}
       <Routes>
         <Route path="/" element={<Home />} />
@@ -58,6 +60,7 @@ function App() {
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/Checkout" element={<Checkout />} />
         <Route path="/PaymentSuccess" element={<PaymentSuccess />} />
+        <Route path="/contact" element={<Contact />} />
 
         {/* Add later */}
         {/* <Route path="/trainers" element={<Trainers />} /> */}

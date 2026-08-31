@@ -1,7 +1,9 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
+  const navigate = useNavigate();
+
   return (
     <header className="navbar">
       <div className="logo">
@@ -13,9 +15,12 @@ function Navbar() {
         <NavLink to="/programs">Programs</NavLink>
         <NavLink to="/trainers">Trainers</NavLink>
         <NavLink to="/pricing">Pricing</NavLink>
+        <NavLink to="/contact">Contact</NavLink>
       </nav>
 
-      <button className="nav-button">Start Training</button>
+      <button className="nav-button" onClick={() => navigate("/programs")}>
+        Start Training
+      </button>
     </header>
   );
 }

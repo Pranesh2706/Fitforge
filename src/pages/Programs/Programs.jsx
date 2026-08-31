@@ -92,7 +92,10 @@ function Programs() {
       {/* Hero */}
       <section className="programs-hero">
         <div className="programs-hero-content">
-          <p className="eyebrow">TRAIN WITH PURPOSE</p>
+          <div className="programs-hero-label">
+            <span></span>
+            TRAIN WITH PURPOSE
+          </div>
 
           <h1>
             PROGRAMS BUILT
@@ -100,20 +103,44 @@ function Programs() {
             AROUND <span>YOUR GOALS.</span>
           </h1>
 
-          <p>
+          <p className="programs-hero-description">
             Whether you're building muscle, losing fat, getting stronger, or
-            starting your fitness journey, find a program designed for you.
+            starting your fitness journey, find a program designed specifically
+            for you.
           </p>
 
-          <button className="primary-button">Find My Program</button>
+          <div className="programs-hero-actions">
+            <button className="primary-button">
+              Find My Program
+              <span>→</span>
+            </button>
+
+            {/* <div className="hero-mini-text">
+              <span>01</span>
+              CHOOSE YOUR GOAL
+            </div> */}
+          </div>
         </div>
 
         <div className="programs-hero-stat">
-          <strong>500+</strong>
-          <span>WORKOUTS</span>
-        </div>
-      </section>
+          <div className="stat-line"></div>
 
+          <div className="stat-content">
+            <span className="stat-number">
+              500<span>+</span>
+            </span>
+            <span className="stat-label">WORKOUTS</span>
+          </div>
+
+          <div className="stat-description">
+            Structured training
+            <br />
+            for every level.
+          </div>
+        </div>
+
+        <div className="hero-background-number">01</div>
+      </section>
       {/* Filters */}
       <section className="program-filter">
         <button className="filter-active">All</button>

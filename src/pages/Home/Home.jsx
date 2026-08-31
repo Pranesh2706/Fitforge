@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Home.css";
+import Contact from "../../components/Contact/Contact";
 import Button from "../../components/Buttons/Buttons";
 import Programs from "../../pages/Programs/Programs";
 import Trainers from "../../pages/Trainers/Trainers";
@@ -11,7 +13,7 @@ import Pricing from "../../pages/Pricing/Pricing";
 // import { useNavigate } from "react-router-dom";
 import Homevideo from "../../assets/Homevideo.mp4";
 function Home() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [isMuted, setIsMuted] = useState(true);
   return (
     <div className="home">
@@ -43,9 +45,11 @@ function Home() {
             </p>
 
             <div className="hero-actions">
-              <Button variant="primary">Start Your Journey</Button>
+              <Button variant="primary" onClick={() => navigate("/programs")}>
+                Start Your Journey
+              </Button>
 
-              <Button variant="secondary" href="/programs">
+              <Button variant="secondary" onClick={() => navigate("/programs")}>
                 Explore Programs
               </Button>
             </div>
@@ -141,6 +145,9 @@ function Home() {
 
         <section id="pricing" className="scroll-section">
           <Pricing />
+        </section>
+        <section id="contact" className="scroll-section">
+          <Contact />
         </section>
       </main>
     </div>

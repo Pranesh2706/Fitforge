@@ -1,4 +1,10 @@
 import "./Footer.css";
+import {
+  FaInstagram,
+  FaFacebookF,
+  FaYoutube,
+  FaLinkedinIn,
+} from "react-icons/fa";
 
 function Footer() {
   const scrollToSection = (id) => {
@@ -51,19 +57,19 @@ function Footer() {
 
           <div className="footer-socials">
             <a href="#" aria-label="Instagram">
-              IG
-            </a>
-
-            <a href="#" aria-label="YouTube">
-              YT
+              <FaInstagram />
             </a>
 
             <a href="#" aria-label="Facebook">
-              FB
+              <FaFacebookF />
             </a>
 
-            <a href="#" aria-label="X">
-              X
+            <a href="#" aria-label="YouTube">
+              <FaYoutube />
+            </a>
+
+            <a href="#" aria-label="LinkedIn">
+              <FaLinkedinIn />
             </a>
           </div>
         </div>
@@ -79,6 +85,8 @@ function Footer() {
           <button onClick={() => scrollToSection("trainers")}>Trainers</button>
 
           <button onClick={() => scrollToSection("pricing")}>Pricing</button>
+
+          <button onClick={() => scrollToSection("contact")}>Contact</button>
         </div>
 
         {/* Training */}
