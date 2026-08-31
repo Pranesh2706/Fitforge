@@ -1,0 +1,432 @@
+/* =========================
+   PAYMENT SUCCESS PAGE
+========================= */
+
+.payment-success-page {
+  min-height: 100vh;
+
+  background: #090909;
+
+  color: #fff;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.success-header {
+  height: 75px;
+
+  padding: 0 8%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.success-logo {
+  font-size: 20px;
+
+  font-weight: 900;
+
+  letter-spacing: -0.5px;
+}
+
+.success-logo span {
+  color: #b1f800;
+}
+
+.success-secure {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  color: #666;
+
+  font-size: 10px;
+
+  font-weight: 600;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.success-container {
+  width: 100%;
+
+  max-width: 800px;
+
+  margin: 0 auto;
+
+  padding: 80px 24px 110px;
+
+  text-align: center;
+}
+
+/* =========================
+   SUCCESS ICON
+========================= */
+
+.success-icon {
+  width: 64px;
+  height: 64px;
+
+  margin: 0 auto 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #b1f800;
+
+  color: #050505;
+
+  font-size: 28px;
+
+  font-weight: 900;
+
+  box-shadow:
+    0 0 0 8px rgba(177, 248, 0, 0.06),
+    0 0 35px rgba(177, 248, 0, 0.12);
+}
+
+/* =========================
+   HEADING
+========================= */
+
+.success-eyebrow {
+  margin: 0 0 15px;
+
+  color: #b1f800;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 2.5px;
+}
+
+.success-container h1 {
+  margin: 0;
+
+  font-size: clamp(45px, 6vw, 75px);
+
+  line-height: 0.92;
+
+  letter-spacing: -3px;
+
+  font-weight: 800;
+}
+
+.success-container h1 span {
+  color: #b1f800;
+}
+
+.success-message {
+  max-width: 500px;
+
+  margin: 22px auto 45px;
+
+  color: #777;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+/* =========================
+   MEMBERSHIP CARD
+========================= */
+
+.membership-card {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 28px;
+
+  background: #111;
+
+  border: 1px solid rgba(177, 248, 0, 0.25);
+
+  text-align: left;
+}
+
+/* CARD TOP */
+
+.membership-card-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.card-label {
+  margin: 0 0 7px;
+
+  color: #666;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+}
+
+.membership-card h2 {
+  margin: 0;
+
+  color: #b1f800;
+
+  font-size: 30px;
+
+  letter-spacing: 1px;
+}
+
+/* ACTIVE */
+
+.active-status {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 7px 10px;
+
+  border: 1px solid rgba(177, 248, 0, 0.25);
+
+  color: #b1f800;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+.active-status span {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #b1f800;
+
+  box-shadow: 0 0 8px rgba(177, 248, 0, 0.7);
+}
+
+/* =========================
+   DIVIDER
+========================= */
+
+.membership-divider {
+  width: 100%;
+
+  height: 1px;
+
+  margin: 24px 0;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* =========================
+   DETAILS
+========================= */
+
+.membership-details {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 20px;
+}
+
+.membership-details p {
+  margin: 0 0 8px;
+
+  color: #555;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+.membership-details strong {
+  color: #ddd;
+
+  font-size: 14px;
+}
+
+/* =========================
+   TRANSACTION
+========================= */
+
+.transaction-details {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.transaction-details div {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.transaction-details span {
+  color: #555;
+
+  font-size: 10px;
+}
+
+.transaction-details strong {
+  color: #888;
+
+  font-size: 10px;
+
+  font-weight: 500;
+
+  word-break: break-all;
+
+  text-align: right;
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.success-actions {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-top: 28px;
+}
+
+.success-button {
+  padding: 13px 24px;
+
+  border: 1px solid #b1f800;
+
+  font-family: inherit;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.success-button.primary {
+  background: #b1f800;
+
+  color: #050505;
+}
+
+.success-button.primary:hover {
+  background: #c4ff3a;
+
+  transform: translateY(-2px);
+}
+
+.success-button.secondary {
+  background: transparent;
+
+  color: #b1f800;
+}
+
+.success-button.secondary:hover {
+  background: #b1f800;
+
+  color: #050505;
+}
+
+/* =========================
+   FOOTER TEXT
+========================= */
+
+.success-footer-text {
+  margin: 25px 0 0;
+
+  color: #444;
+
+  font-size: 10px;
+
+  letter-spacing: 0.3px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+  .success-header {
+    padding: 0 6%;
+  }
+
+  .success-container {
+    padding: 65px 18px 80px;
+  }
+
+  .success-container h1 {
+    letter-spacing: -2px;
+  }
+
+  .membership-card {
+    padding: 22px 20px;
+  }
+
+  .membership-card-top {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .membership-details {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .transaction-details div {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 5px;
+  }
+
+  .transaction-details strong {
+    text-align: left;
+  }
+
+  .success-actions {
+    flex-direction: column;
+  }
+
+  .success-button {
+    width: 100%;
+  }
+}

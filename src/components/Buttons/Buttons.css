@@ -1,0 +1,187 @@
+/* =========================
+   FITFORGE BUTTONS
+========================= */
+
+.ff-button {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  min-height: 48px;
+  padding: 0 22px;
+
+  border: 1px solid transparent;
+  border-radius: 8px;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+
+  text-decoration: none;
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    color 0.3s ease;
+}
+
+/* =========================
+   SHINE EFFECT
+========================= */
+
+.ff-button::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: -120%;
+
+  width: 70%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.18),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+
+  transition: left 0.6s ease;
+}
+
+.ff-button:hover::before {
+  left: 140%;
+}
+
+/* Keep text above shine */
+
+.ff-button span {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================
+   ARROW
+========================= */
+
+.ff-button-arrow {
+  font-size: 15px;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.ff-button:hover .ff-button-arrow {
+  transform: translate(3px, -3px);
+}
+
+/* =========================
+   PRIMARY
+========================= */
+
+.ff-button-primary {
+  color: #050505;
+
+  background: #b6ff00;
+
+  border-color: #b6ff00;
+
+  box-shadow: 0 0 0 rgba(182, 255, 0, 0);
+}
+
+.ff-button-primary:hover {
+  background: #c4ff33;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 25px rgba(182, 255, 0, 0.18),
+    0 0 30px rgba(182, 255, 0, 0.08);
+}
+
+.ff-button-primary:active {
+  transform: translateY(0);
+}
+
+/* =========================
+   SECONDARY
+========================= */
+
+.ff-button-secondary {
+  color: #ffffff;
+
+  background: rgba(255, 255, 255, 0.03);
+
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.ff-button-secondary:hover {
+  color: #b6ff00;
+
+  background: rgba(182, 255, 0, 0.04);
+
+  border-color: rgba(182, 255, 0, 0.5);
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================
+   OUTLINE
+========================= */
+
+.ff-button-outline {
+  color: #b6ff00;
+
+  background: transparent;
+
+  border-color: rgba(182, 255, 0, 0.5);
+}
+
+.ff-button-outline:hover {
+  color: #050505;
+
+  background: #b6ff00;
+
+  border-color: #b6ff00;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 25px rgba(182, 255, 0, 0.15);
+}
+
+/* =========================
+   FOCUS
+========================= */
+
+.ff-button:focus-visible {
+  outline: 2px solid #b6ff00;
+  outline-offset: 4px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+  .ff-button {
+    min-height: 46px;
+    padding: 0 18px;
+
+    font-size: 12px;
+  }
+}

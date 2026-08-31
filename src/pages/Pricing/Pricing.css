@@ -1,0 +1,475 @@
+/* =========================
+   PRICING PAGE
+========================= */
+
+.pricing-page {
+  width: 100%;
+  background: #090909;
+  color: #fff;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.pricing-hero {
+  padding: 120px 8% 80px;
+  text-align: center;
+}
+
+.pricing-hero h1 {
+  font-size: clamp(50px, 7vw, 100px);
+  line-height: 0.92;
+  margin: 20px 0 28px;
+  letter-spacing: -4px;
+  font-weight: 800;
+}
+
+.pricing-hero h1 span {
+  color: #b1f800;
+}
+
+.pricing-hero > p:last-child {
+  max-width: 650px;
+  margin: 0 auto;
+  color: #888;
+  line-height: 1.7;
+  font-size: 17px;
+}
+
+/* =========================
+   PLANS
+========================= */
+
+.pricing-plans {
+  padding: 80px 8% 110px;
+}
+
+.pricing-plans .section-heading {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.pricing-plans .section-heading h2 {
+  font-size: clamp(40px, 5vw, 65px);
+  margin: 15px 0;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.pricing-plans .section-heading h2 span {
+  color: #b1f800;
+}
+
+.pricing-plans .section-heading > p:last-child {
+  color: #777;
+  font-size: 15px;
+}
+
+/* =========================
+   PRICING GRID
+========================= */
+
+.pricing-grid {
+  max-width: 1120px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 18px;
+
+  align-items: stretch;
+}
+
+/* =========================
+   PRICING CARD
+========================= */
+
+.pricing-card {
+  position: relative;
+
+  padding: 30px 28px 26px;
+
+  background: #111;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  display: flex;
+  flex-direction: column;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-6px);
+
+  border-color: rgba(177, 248, 0, 0.4);
+
+  background: #121212;
+}
+
+/* =========================
+   POPULAR CARD
+========================= */
+
+.pricing-card.popular {
+  border-color: #b1f800;
+
+  transform: translateY(-7px);
+
+  background: #101400;
+}
+
+.pricing-card.popular:hover {
+  transform: translateY(-12px);
+}
+
+/* =========================
+   POPULAR BADGE
+========================= */
+
+.popular-badge {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  padding: 7px 12px;
+
+  background: #b1f800;
+
+  color: #050505;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+/* =========================
+   PLAN NAME
+========================= */
+
+.pricing-plan-name {
+  margin: 0 0 12px;
+
+  color: #b1f800;
+
+  font-size: 11px;
+
+  letter-spacing: 2px;
+
+  font-weight: 700;
+}
+
+/* =========================
+   PRICE
+========================= */
+
+.pricing-card h3 {
+  margin: 0 0 14px;
+
+  font-size: 42px;
+
+  line-height: 1;
+
+  letter-spacing: -1.5px;
+
+  font-weight: 800;
+}
+
+.pricing-card h3 span {
+  margin-left: 4px;
+
+  font-size: 12px;
+
+  color: #777;
+
+  font-weight: 400;
+
+  letter-spacing: 0;
+}
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.pricing-description {
+  margin: 0;
+
+  color: #888;
+
+  line-height: 1.5;
+
+  font-size: 13px;
+
+  min-height: 40px;
+}
+
+/* =========================
+   DIVIDER
+========================= */
+
+.pricing-divider {
+  width: 100%;
+
+  height: 1px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  margin: 20px 0;
+}
+
+/* =========================
+   FEATURES
+========================= */
+
+.pricing-card ul {
+  list-style: none;
+
+  padding: 0;
+
+  margin: 0;
+}
+
+.pricing-card li {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 9px;
+
+  margin-bottom: 10px;
+
+  color: #aaa;
+
+  font-size: 13px;
+
+  line-height: 1.4;
+}
+
+.pricing-card li:last-child {
+  margin-bottom: 0;
+}
+
+.pricing-card li span {
+  color: #b1f800;
+
+  font-weight: 800;
+
+  flex-shrink: 0;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.pricing-button {
+  width: 100%;
+
+  margin-top: 22px;
+
+  padding: 12px 15px;
+
+  border: 1px solid #b1f800;
+
+  background: transparent;
+
+  color: #b1f800;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.3px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.pricing-button:hover {
+  background: #b1f800;
+
+  color: #050505;
+
+  transform: translateY(-1px);
+}
+
+.pricing-card.popular .pricing-button {
+  background: #b1f800;
+
+  color: #050505;
+}
+
+.pricing-card.popular .pricing-button:hover {
+  background: transparent;
+
+  color: #b1f800;
+}
+
+/* =========================
+   BOTTOM CTA
+========================= */
+
+.pricing-cta {
+  padding: 110px 8% 120px;
+
+  text-align: center;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pricing-cta h2 {
+  font-size: clamp(45px, 6vw, 80px);
+
+  line-height: 0.95;
+
+  margin: 20px 0;
+
+  letter-spacing: -3px;
+
+  font-weight: 800;
+}
+
+.pricing-cta h2 span {
+  color: #b1f800;
+}
+
+.pricing-cta p:last-child {
+  color: #777;
+
+  font-size: 15px;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1000px) {
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+
+    max-width: 760px;
+  }
+
+  .pricing-card.popular {
+    transform: none;
+  }
+
+  .pricing-card.popular:hover {
+    transform: translateY(-6px);
+  }
+
+  .pricing-card:last-child {
+    grid-column: 1 / -1;
+
+    max-width: 370px;
+
+    width: 100%;
+
+    justify-self: center;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+  .pricing-hero {
+    padding: 90px 6% 65px;
+  }
+
+  .pricing-hero h1 {
+    letter-spacing: -2px;
+  }
+
+  .pricing-hero > p:last-child {
+    font-size: 15px;
+  }
+
+  .pricing-plans {
+    padding: 60px 6% 80px;
+  }
+
+  .pricing-plans .section-heading {
+    margin-bottom: 40px;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+
+    max-width: 500px;
+
+    gap: 16px;
+  }
+
+  .pricing-card {
+    padding: 28px 24px 24px;
+  }
+
+  .pricing-card:last-child {
+    grid-column: auto;
+
+    max-width: none;
+  }
+
+  .pricing-card.popular {
+    transform: none;
+  }
+
+  .pricing-card.popular:hover {
+    transform: translateY(-6px);
+  }
+
+  .pricing-card h3 {
+    font-size: 40px;
+  }
+
+  .pricing-cta {
+    padding: 80px 6% 90px;
+  }
+
+  .pricing-cta h2 {
+    letter-spacing: -2px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 400px) {
+  .pricing-hero {
+    padding-top: 75px;
+  }
+
+  .pricing-hero h1 {
+    font-size: 45px;
+  }
+
+  .pricing-card {
+    padding: 25px 20px 21px;
+  }
+
+  .pricing-card h3 {
+    font-size: 36px;
+  }
+
+  .pricing-card li {
+    font-size: 12px;
+  }
+
+  .pricing-button {
+    padding: 11px;
+  }
+}
