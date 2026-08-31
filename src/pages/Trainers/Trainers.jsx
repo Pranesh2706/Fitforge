@@ -1,9 +1,9 @@
 import "./Trainers.css";
 
 import trainer1 from "../../assets/Trainer1.jpg";
-import trainer2 from "../../assets/trainer2.jpg";
-import trainer3 from "../../assets/trainer3.jpg";
-import trainer4 from "../../assets/trainer4.jpg";
+import trainer2 from "../../assets/Trainer2.jpg";
+import trainer3 from "../../assets/Trainer3.jpg";
+import trainer4 from "../../assets/Trainer4.jpg";
 
 function Trainers() {
   const trainers = [

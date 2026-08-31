@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import "./ExerciseDetails.css";
+import "./Exercisedetails.css";
 
 const exerciseData = {
   "barbell-squat": {

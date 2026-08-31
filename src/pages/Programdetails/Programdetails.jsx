@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import "./ProgramDetails.css";
+import "./Programdetails.css";
 
 const programData = {
   "muscle-builder": {
