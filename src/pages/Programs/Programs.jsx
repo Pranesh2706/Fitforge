@@ -1,6 +1,6 @@
 import "./Programs.css";
 import Programcard from "../../components/Programcard/Programcard";
-
+import { useNavigate } from "react-router-dom";
 import workout1 from "../../assets/workout1.jpg";
 import workout2 from "../../assets/workout2.jpg";
 import workout3 from "../../assets/workout3.jpg";
@@ -12,6 +12,7 @@ import workout8 from "../../assets/workout8.jpg";
 import workout9 from "../../assets/workout9.jpg";
 import workout10 from "../../assets/workout10.jpg";
 function Programs() {
+  const navigate = useNavigate();
   const programs = [
     {
       id: "muscle-builder",
@@ -110,15 +111,10 @@ function Programs() {
           </p>
 
           <div className="programs-hero-actions">
-            <button className="primary-button">
+            <a href="#programs" className="primary-button">
               Find My Program
               <span>→</span>
-            </button>
-
-            {/* <div className="hero-mini-text">
-              <span>01</span>
-              CHOOSE YOUR GOAL
-            </div> */}
+            </a>
           </div>
         </div>
 
@@ -167,7 +163,7 @@ function Programs() {
           </p>
         </div>
 
-        <div className="programs-grid">
+        <div className="programs-grid" id="programs">
           {programs.map((program) => (
             <Programcard key={program.number} program={program} />
           ))}
@@ -189,7 +185,9 @@ function Programs() {
           program that fits your lifestyle.
         </p>
 
-        <button className="primary-button">Find My Program</button>
+        <a href="#programs" className="primary-button">
+          Find My Program
+        </a>
       </section>
     </div>
   );

@@ -163,7 +163,7 @@
   display: inline-flex;
 
   align-items: center;
-
+  text-decoration: none;
   justify-content: center;
 
   gap: 20px;
@@ -500,6 +500,7 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
 
   border-radius: 28px;
+  text-decoration: none;
 }
 
 /* subtle glow */
@@ -614,7 +615,7 @@
   text-transform: uppercase;
 
   cursor: pointer;
-
+  text-decoration: none;
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease,
