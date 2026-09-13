@@ -78,7 +78,8 @@ function Checkout() {
 
       // 2. Create order on our backend
       const orderResponse = await fetch(
-        "http://localhost:5000/api/payment/create-order",
+        // "http://localhost:5000/api/payment/create-order",
+        "https://fitforge-cilr.onrender.com/api/payment/create-order",
         {
           method: "POST",
           headers: {
@@ -125,7 +126,8 @@ function Checkout() {
           try {
             // 4. Send payment details to backend
             const verifyResponse = await fetch(
-              "http://localhost:5000/api/payment/verify",
+              // "http://localhost:5000/api/payment/verify",
+              "https://fitforge-cilr.onrender.com/api/payment/verify",
               {
                 method: "POST",
                 headers: {
