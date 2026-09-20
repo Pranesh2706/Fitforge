@@ -20,7 +20,7 @@ function Programs() {
       title: "Muscle Builder",
       image: workout1,
       description:
-        "Build lean muscle, increase strength, and develop a consistent training routine.",
+        "Build lean muscle, increase strength, and develop a consistent training.",
       duration: "12 Weeks",
       frequency: "5 Days / Week",
       level: "Intermediate",
@@ -56,7 +56,7 @@ function Programs() {
       title: "Beginner Foundation",
       image: workout4,
       description:
-        "Learn proper movement, build confidence, and establish a strong fitness foundation.",
+        "Learn proper movement and establish a strong fitness foundation.",
       duration: "6 Weeks",
       frequency: "4 Days / Week",
       level: "Beginner",
@@ -187,6 +187,7 @@ function Programs() {
 
         <a href="#programs" className="primary-button">
           Find My Program
+          <span>→</span>
         </a>
       </section>
     </div>

@@ -1,16 +1,18 @@
-/* =========================
+/* =========================================================
    PRICING PAGE
-========================= */
+   ========================================================= */
 
 .pricing-page {
   width: 100%;
+  max-width: 100%;
   background: #090909;
   color: #fff;
+  overflow-x: hidden;
 }
 
-/* =========================
+/* =========================================================
    HERO
-========================= */
+   ========================================================= */
 
 .pricing-hero {
   padding: 120px 8% 80px;
@@ -37,20 +39,25 @@
   font-size: 17px;
 }
 
-/* =========================
+/* =========================================================
    PLANS
-========================= */
+   ========================================================= */
 
 .pricing-plans {
   padding: 80px 8% 110px;
 }
 
 .pricing-plans .section-heading {
+  display: block;
+  width: 100%;
+  max-width: 100%;
   text-align: center;
   margin-bottom: 50px;
 }
 
 .pricing-plans .section-heading h2 {
+  width: 100%;
+  max-width: 100%;
   font-size: clamp(40px, 5vw, 65px);
   margin: 15px 0;
   line-height: 1;
@@ -62,37 +69,37 @@
 }
 
 .pricing-plans .section-heading > p:last-child {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
   color: #777;
   font-size: 15px;
+  line-height: 1.6;
 }
 
-/* =========================
+/* =========================================================
    PRICING GRID
-========================= */
+   ========================================================= */
 
 .pricing-grid {
   max-width: 1120px;
   margin: auto;
-
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
-
   align-items: stretch;
 }
 
-/* =========================
+/* =========================================================
    PRICING CARD
-========================= */
+   ========================================================= */
 
 .pricing-card {
   position: relative;
-
+  min-width: 0;
+  box-sizing: border-box;
   padding: 30px 28px 26px;
-
   background: #111;
-
   border: 1px solid rgba(255, 255, 255, 0.08);
 
   display: flex;
@@ -106,21 +113,17 @@
 
 .pricing-card:hover {
   transform: translateY(-6px);
-
   border-color: rgba(177, 248, 0, 0.4);
-
   background: #121212;
 }
 
-/* =========================
+/* =========================================================
    POPULAR CARD
-========================= */
+   ========================================================= */
 
 .pricing-card.popular {
   border-color: #b1f800;
-
   transform: translateY(-7px);
-
   background: #101400;
 }
 
@@ -128,32 +131,28 @@
   transform: translateY(-12px);
 }
 
-/* =========================
+/* =========================================================
    POPULAR BADGE
-========================= */
+   ========================================================= */
 
 .popular-badge {
   position: absolute;
-
   top: 0;
   right: 0;
 
   padding: 7px 12px;
 
   background: #b1f800;
-
   color: #050505;
 
   font-size: 9px;
-
   font-weight: 800;
-
   letter-spacing: 1px;
 }
 
-/* =========================
+/* =========================================================
    PLAN NAME
-========================= */
+   ========================================================= */
 
 .pricing-plan-name {
   margin: 0 0 12px;
@@ -161,25 +160,20 @@
   color: #b1f800;
 
   font-size: 11px;
-
   letter-spacing: 2px;
-
   font-weight: 700;
 }
 
-/* =========================
+/* =========================================================
    PRICE
-========================= */
+   ========================================================= */
 
 .pricing-card h3 {
   margin: 0 0 14px;
 
   font-size: 42px;
-
   line-height: 1;
-
   letter-spacing: -1.5px;
-
   font-weight: 800;
 }
 
@@ -187,17 +181,14 @@
   margin-left: 4px;
 
   font-size: 12px;
-
   color: #777;
-
   font-weight: 400;
-
   letter-spacing: 0;
 }
 
-/* =========================
+/* =========================================================
    DESCRIPTION
-========================= */
+   ========================================================= */
 
 .pricing-description {
   margin: 0;
@@ -205,19 +196,17 @@
   color: #888;
 
   line-height: 1.5;
-
   font-size: 13px;
 
   min-height: 40px;
 }
 
-/* =========================
+/* =========================================================
    DIVIDER
-========================= */
+   ========================================================= */
 
 .pricing-divider {
   width: 100%;
-
   height: 1px;
 
   background: rgba(255, 255, 255, 0.08);
@@ -225,31 +214,26 @@
   margin: 20px 0;
 }
 
-/* =========================
+/* =========================================================
    FEATURES
-========================= */
+   ========================================================= */
 
 .pricing-card ul {
   list-style: none;
-
   padding: 0;
-
   margin: 0;
 }
 
 .pricing-card li {
   display: flex;
-
   align-items: flex-start;
 
   gap: 9px;
-
   margin-bottom: 10px;
 
   color: #aaa;
 
   font-size: 13px;
-
   line-height: 1.4;
 }
 
@@ -259,33 +243,27 @@
 
 .pricing-card li span {
   color: #b1f800;
-
   font-weight: 800;
-
   flex-shrink: 0;
 }
 
-/* =========================
+/* =========================================================
    BUTTON
-========================= */
+   ========================================================= */
 
 .pricing-button {
   width: 100%;
 
   margin-top: 22px;
-
   padding: 12px 15px;
 
   border: 1px solid #b1f800;
 
   background: transparent;
-
   color: #b1f800;
 
   font-size: 12px;
-
   font-weight: 700;
-
   letter-spacing: 0.3px;
 
   cursor: pointer;
@@ -298,27 +276,23 @@
 
 .pricing-button:hover {
   background: #b1f800;
-
   color: #050505;
-
   transform: translateY(-1px);
 }
 
 .pricing-card.popular .pricing-button {
   background: #b1f800;
-
   color: #050505;
 }
 
 .pricing-card.popular .pricing-button:hover {
   background: transparent;
-
   color: #b1f800;
 }
 
-/* =========================
+/* =========================================================
    BOTTOM CTA
-========================= */
+   ========================================================= */
 
 .pricing-cta {
   padding: 110px 8% 120px;
@@ -346,18 +320,21 @@
 
 .pricing-cta p:last-child {
   color: #777;
-
   font-size: 15px;
 }
 
-/* =========================
+/* =========================================================
    TABLET
-========================= */
+   ========================================================= */
 
 @media (max-width: 1000px) {
-  .pricing-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .pricing-plans .section-heading {
+    display: block;
+    text-align: center;
+  }
 
+  .pricing-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     max-width: 760px;
   }
 
@@ -380,47 +357,143 @@
   }
 }
 
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+   ========================================================= */
 
 @media (max-width: 700px) {
+  .pricing-page {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* -------------------------
+     HERO
+     ------------------------- */
+
   .pricing-hero {
-    padding: 90px 6% 65px;
+    padding: 85px 20px 60px;
   }
 
   .pricing-hero h1 {
-    letter-spacing: -2px;
+    max-width: 390px;
+
+    margin: 18px auto 24px;
+
+    font-size: clamp(44px, 14vw, 64px);
+
+    line-height: 0.94;
+
+    letter-spacing: -2.5px;
   }
 
   .pricing-hero > p:last-child {
-    font-size: 15px;
+    max-width: 340px;
+
+    margin: 0 auto;
+
+    font-size: 14px;
+
+    line-height: 1.7;
   }
+
+  /* -------------------------
+     PLANS
+     ------------------------- */
 
   .pricing-plans {
-    padding: 60px 6% 80px;
+    padding: 60px 20px 80px;
   }
+
+  /*
+     IMPORTANT MOBILE FIX
+
+     Prevent global .section-heading
+     grid/flex styles from squeezing
+     the pricing heading.
+  */
 
   .pricing-plans .section-heading {
-    margin-bottom: 40px;
+    display: block !important;
+
+    width: 100%;
+    max-width: 100%;
+
+    margin: 0 auto 42px;
+
+    text-align: center;
+
+    grid-template-columns: none !important;
+    grid-template-areas: none !important;
+
+    flex-direction: column !important;
   }
 
-  .pricing-grid {
-    grid-template-columns: 1fr;
+  .pricing-plans .section-heading .eyebrow {
+    display: block;
 
+    width: 100%;
+
+    margin-bottom: 14px;
+  }
+
+  .pricing-plans .section-heading h2 {
+    display: block;
+
+    width: 100%;
+    max-width: 360px;
+
+    margin: 0 auto 18px;
+
+    font-size: clamp(42px, 12vw, 58px);
+
+    line-height: 0.94;
+
+    letter-spacing: -2px;
+  }
+
+  .pricing-plans .section-heading > p:last-child {
+    display: block;
+
+    width: 100%;
+    max-width: 330px;
+
+    margin: 0 auto;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+  }
+
+  /* -------------------------
+     PRICING GRID
+     ------------------------- */
+
+  .pricing-grid {
+    display: grid;
+
+    grid-template-columns: minmax(0, 1fr);
+
+    width: 100%;
     max-width: 500px;
+
+    margin: 0 auto;
 
     gap: 16px;
   }
 
+  /* -------------------------
+     PRICING CARD
+     ------------------------- */
+
   .pricing-card {
-    padding: 28px 24px 24px;
-  }
+    width: 100%;
+    min-width: 0;
 
-  .pricing-card:last-child {
-    grid-column: auto;
+    box-sizing: border-box;
 
-    max-width: none;
+    padding: 28px 22px 24px;
   }
 
   .pricing-card.popular {
@@ -428,37 +501,115 @@
   }
 
   .pricing-card.popular:hover {
-    transform: translateY(-6px);
+    transform: translateY(-5px);
   }
+
+  .pricing-card:last-child {
+    grid-column: auto;
+
+    width: 100%;
+    max-width: none;
+
+    justify-self: stretch;
+  }
+
+  /* -------------------------
+     PRICE
+     ------------------------- */
 
   .pricing-card h3 {
     font-size: 40px;
   }
 
+  /* -------------------------
+     FEATURES
+     ------------------------- */
+
+  .pricing-card li {
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  /* -------------------------
+     BUTTON
+     ------------------------- */
+
+  .pricing-button {
+    min-height: 44px;
+
+    padding: 12px 15px;
+  }
+
+  /* -------------------------
+     BOTTOM CTA
+     ------------------------- */
+
   .pricing-cta {
-    padding: 80px 6% 90px;
+    padding: 80px 20px 90px;
+
+    overflow: hidden;
   }
 
   .pricing-cta h2 {
+    max-width: 380px;
+
+    margin: 18px auto;
+
+    font-size: clamp(42px, 12vw, 64px);
+
+    line-height: 0.95;
+
     letter-spacing: -2px;
+  }
+
+  .pricing-cta p:last-child {
+    max-width: 330px;
+
+    margin: 0 auto;
+
+    line-height: 1.6;
   }
 }
 
-/* =========================
+/* =========================================================
    SMALL MOBILE
-========================= */
+   ========================================================= */
 
 @media (max-width: 400px) {
   .pricing-hero {
-    padding-top: 75px;
+    padding: 72px 18px 55px;
   }
 
   .pricing-hero h1 {
-    font-size: 45px;
+    max-width: 350px;
+
+    font-size: 44px;
+
+    letter-spacing: -2px;
+  }
+
+  .pricing-plans {
+    padding: 55px 18px 70px;
+  }
+
+  .pricing-plans .section-heading {
+    margin-bottom: 38px;
+  }
+
+  .pricing-plans .section-heading h2 {
+    max-width: 330px;
+
+    font-size: 43px;
+  }
+
+  .pricing-plans .section-heading > p:last-child {
+    max-width: 300px;
+
+    font-size: 13px;
   }
 
   .pricing-card {
-    padding: 25px 20px 21px;
+    padding: 25px 19px 21px;
   }
 
   .pricing-card h3 {
@@ -471,5 +622,50 @@
 
   .pricing-button {
     padding: 11px;
+  }
+
+  .pricing-cta {
+    padding: 70px 18px 80px;
+  }
+
+  .pricing-cta h2 {
+    font-size: 43px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL DEVICES
+   ========================================================= */
+
+@media (max-width: 360px) {
+  .pricing-hero {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .pricing-plans {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .pricing-card {
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+
+  .pricing-plan-name {
+    font-size: 10px;
+  }
+
+  .pricing-card h3 {
+    font-size: 34px;
+  }
+
+  .pricing-card li {
+    font-size: 11.5px;
+  }
+
+  .pricing-plans .section-heading h2 {
+    font-size: 40px;
   }
 }

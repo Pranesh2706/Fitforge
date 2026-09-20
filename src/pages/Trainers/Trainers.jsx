@@ -1,4 +1,5 @@
 import "./Trainers.css";
+import { useNavigate } from "react-router-dom";
 
 import trainer1 from "../../assets/Trainer1.jpg";
 import trainer2 from "../../assets/Trainer2.jpg";
@@ -6,6 +7,8 @@ import trainer3 from "../../assets/Trainer3.jpg";
 import trainer4 from "../../assets/Trainer4.jpg";
 
 function Trainers() {
+  const navigate = useNavigate();
+
   const trainers = [
     {
       name: "Alex Carter",
@@ -39,37 +42,70 @@ function Trainers() {
 
   return (
     <div className="trainers-page">
-      {/* Hero */}
-      <section className="trainers-hero">
-        <div className="trainers-hero-content">
-          <p className="eyebrow">MEET YOUR COACHES</p>
+      {/* =====================================================
+          HERO
+      ===================================================== */}
 
+      <section className="trainers-hero">
+        <div className="trainers-hero-left">
+          <div className="trainers-hero-eyebrow">
+            <span></span>
+            OUR EXPERTS
+          </div>
+
+          <p className="trainers-hero-description">
+            At FITFORGE, our trainers aren’t just professionals — they’re
+            passionate coaches, mentors, and motivators. Each trainer brings
+            unique expertise to help you achieve your fitness goals, no matter
+            where you are on your journey.
+          </p>
+
+          <div className="trainers-hero-meta">
+            <span>01</span>
+            <div>
+              <strong>PERSONALIZED COACHING</strong>
+              <p>Train smarter. Move stronger.</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="trainers-hero-right">
           <h1>
-            TRAIN WITH
+            COACHES
             <br />
-            <span>THE BEST.</span>
+            WHO
+            <br />
+            <span>PUSH</span>
+            <br />
+            <span>YOU</span>
+            <br />
+            <span>FORWARD.</span>
           </h1>
 
-          <p>
-            Experienced coaches who combine proven training methods, real-world
-            experience, and personalized guidance to help you become stronger.
-          </p>
+          <div className="trainers-hero-tagline">
+            <span></span>
+            <p>TRAIN. GROW. BELONG.</p>
+          </div>
         </div>
 
-        <div className="trainers-hero-stat">
-          <strong>50+</strong>
-          <span>EXPERT COACHES</span>
-        </div>
+        <div className="trainers-hero-number">02</div>
       </section>
 
-      {/* Trainers */}
+      {/* =====================================================
+          TRAINERS
+      ===================================================== */}
+
       <section className="trainers-list">
         <div className="section-heading">
-          <p className="eyebrow">OUR EXPERTS</p>
+          <div>
+            <p className="eyebrow">MEET THE TEAM</p>
 
-          <h2>
-            Coaches who <span>push you forward.</span>
-          </h2>
+            <h2>
+              TRAINERS WHO
+              <br />
+              <span>MAKE THE DIFFERENCE.</span>
+            </h2>
+          </div>
 
           <p>
             Every FITFORGE coach brings expertise, experience, and a commitment
@@ -78,31 +114,59 @@ function Trainers() {
         </div>
 
         <div className="trainers-grid">
-          {trainers.map((trainer) => (
+          {trainers.map((trainer, index) => (
             <article className="trainer-card" key={trainer.name}>
+              {/* Image */}
               <div className="trainer-image">
                 <img src={trainer.image} alt={trainer.name} />
 
+                <div className="trainer-image-overlay"></div>
+
                 <div className="trainer-number">
-                  {String(trainers.indexOf(trainer) + 1).padStart(2, "0")}
+                  {String(index + 1).padStart(2, "0")}
+                </div>
+
+                <div className="trainer-view">
+                  <span>VIEW COACH</span>
+                  <strong>↗</strong>
                 </div>
               </div>
 
+              {/* Content */}
               <div className="trainer-content">
-                <p className="trainer-role">{trainer.role}</p>
+                <div className="trainer-top">
+                  <p className="trainer-role">{trainer.role}</p>
+
+                  <span className="trainer-status">
+                    <i></i>
+                    ACTIVE
+                  </span>
+                </div>
 
                 <h3>{trainer.name}</h3>
 
-                <p className="trainer-specialty">{trainer.specialty}</p>
+                <div className="trainer-specialty-row">
+                  <span>SPECIALTY</span>
+                  <strong>{trainer.specialty}</strong>
+                </div>
 
-                <span className="trainer-experience">{trainer.experience}</span>
+                <div className="trainer-bottom">
+                  <span className="trainer-experience">
+                    {trainer.experience}
+                  </span>
+
+                  <span className="trainer-arrow">↗</span>
+                </div>
               </div>
             </article>
           ))}
         </div>
       </section>
 
-      {/* CTA */}
+      {/* =====================================================
+          CTA
+      ===================================================== */}
+
       <section className="trainers-cta">
         <p className="eyebrow">READY TO GET STARTED?</p>
 
@@ -117,7 +181,13 @@ function Trainers() {
           build lasting results.
         </p>
 
-        <button className="primary-button">Start Training</button>
+        <button
+          className="primary-button"
+          onClick={() => navigate("/programs")}
+        >
+          <span>START TRAINING</span>
+          <strong>↗</strong>
+        </button>
       </section>
     </div>
   );

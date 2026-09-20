@@ -38,6 +38,12 @@ import Checkout from "./pages/Checkout/Checkout";
 import PaymentSuccess from "./pages/PaymentSuccess/PaymentSuccess";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import Contact from "./components/Contact/Contact";
+import Signup from "./pages/Signup/Signup";
+import Login from "./pages/Login/Login";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import WorkoutHistory from "./pages/WorkoutHistory/WorkoutHistory";
+import Profile from "./pages/Profile/Profile";
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
@@ -58,9 +64,28 @@ function App() {
         <Route path="/exercises/:exerciseId" element={<Exercisedetails />} />
         <Route path="/trainers" element={<Trainers />} />
         <Route path="/pricing" element={<Pricing />} />
-        <Route path="/Checkout" element={<Checkout />} />
+        <Route
+          path="/Checkout"
+          element={
+            <ProtectedRoute>
+              <Checkout />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/PaymentSuccess" element={<PaymentSuccess />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/Signup" element={<Signup />} />
+        <Route path="/Login" element={<Login />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/workout-history" element={<WorkoutHistory />} />
 
         {/* Add later */}
         {/* <Route path="/trainers" element={<Trainers />} /> */}

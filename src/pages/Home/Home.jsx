@@ -1,151 +1,239 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
+
 import Contact from "../../components/Contact/Contact";
 import Button from "../../components/Buttons/Buttons";
 import Programs from "../../pages/Programs/Programs";
 import Trainers from "../../pages/Trainers/Trainers";
 import Pricing from "../../pages/Pricing/Pricing";
-// import heroImg from "../../assets/hero.png";
-// import workout1 from "../../assets/workout1.jpg";
-// import workout2 from "../../assets/workout2.jpg";
-// import workout3 from "../../assets/workout3.jpg";
-// import { useNavigate } from "react-router-dom";
-import Homevideo from "../../assets/Homevideo.mp4";
+
+import heroImage from "../../assets/hero.png";
+
 function Home() {
   const navigate = useNavigate();
-  const [isMuted, setIsMuted] = useState(true);
+
   return (
     <div className="home">
-      {/* Navbar */}
-
       <main>
-        {/* Hero */}
+        {/* ================= HERO ================= */}
         <section className="hero-section">
+          {/* LEFT CONTENT */}
           <div className="hero-content">
-            <p className="eyebrow">YOUR FITNESS. YOUR JOURNEY.</p>
+            <div className="hero-mini-title">
+              <span></span>
+              STRONGER EVERY DAY
+              <i></i>
+            </div>
 
-            {/* <h1>
-              BUILD YOUR
-              <br />
-              <span>STRONGEST</span>
-              <br />
-              VERSION.
-            </h1> */}
             <h1>
-              BUILD YOUR
+              DISCIPLINE
               <br />
-              <span style={{ color: "#b1f800" }}>STRONGEST</span>
-              <br />
-              VERSION.
+              BUILDS <span>FREEDOM.</span>
             </h1>
+
             <p className="hero-description">
-              Personalized workouts, expert guidance, and powerful progress
-              tracking — everything you need to become stronger every day.
+              Personalized workouts. Expert trainers. Real progress.
+              <br />
+              Join FitForge and become the strongest version of yourself.
             </p>
 
             <div className="hero-actions">
-              <Button variant="primary" onClick={() => navigate("/programs")}>
-                Start Your Journey
-              </Button>
+              {localStorage.getItem("fitforge_token") ? (
+                <Button
+                  variant="primary"
+                  onClick={() => navigate("/dashboard")}
+                >
+                  GO TO DASHBOARD →
+                </Button>
+              ) : (
+                <Button variant="primary" onClick={() => navigate("/programs")}>
+                  EXPLORE PROGRAMS →
+                </Button>
+              )}
+            </div>
 
-              <Button variant="secondary" onClick={() => navigate("/programs")}>
-                Explore Programs
-              </Button>
+            {/* STATS */}
+            <div className="hero-stats">
+              <div className="hero-stat">
+                <strong>01</strong>
+                <div>
+                  <b>Workout</b>
+                  <small>Programs</small>
+                </div>
+              </div>
+
+              <div className="hero-stat">
+                <strong>02</strong>
+                <div>
+                  <b>Real</b>
+                  <small>Progress Tracking</small>
+                </div>
+              </div>
+
+              <div className="hero-stat">
+                <strong>03</strong>
+                <div>
+                  <b>Personal</b>
+                  <small>Fitness Dashboard</small>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="hero-image-wrapper">
-            <div className="hero-glow"></div>
-
-            <video
-              src={Homevideo}
+          {/* RIGHT IMAGE */}
+          <div className="hero-visual">
+            <img
+              src={heroImage}
+              alt="FitForge athlete training"
               className="hero-image"
-              autoPlay
-              muted={isMuted}
-              loop
-              playsInline
             />
 
-            <button
-              className="video-sound-button"
-              onClick={() => setIsMuted(!isMuted)}
-              aria-label={isMuted ? "Unmute video" : "Mute video"}
-            >
-              {isMuted ? "🔇" : "🔊"}
-            </button>
+            <div className="hero-image-overlay"></div>
 
-            {/* <div className="floating-card calories">
-              <span>🔥</span>
+            {/* IMAGE TEXT */}
+            <div className="hero-image-brand">
+              <strong>FITFORGE</strong>
+              <span>STRONGER EVERY DAY</span>
+            </div>
 
-              <div>
-                <small>Calories</small>
-                <strong>482 kcal</strong>
+            {/* PROGRESS CARD */}
+            <div className="progress-card">
+              <div className="progress-card-top">
+                <div>
+                  <span>YOUR PROGRESS</span>
+                  <strong>
+                    SMALL STEPS
+                    <br />
+                    BIG CHANGES
+                  </strong>
+                </div>
+
+                <b>↑</b>
               </div>
-            </div> */}
 
-            {/* <div className="floating-card workout">
-              <span>✓</span>
-
-              <div>
-                <small>Today's Workout</small>
-                <strong>Completed</strong>
+              <div className="progress-chart">
+                <span style={{ height: "22%" }}></span>
+                <span style={{ height: "38%" }}></span>
+                <span style={{ height: "32%" }}></span>
+                <span style={{ height: "48%" }}></span>
+                <span style={{ height: "43%" }}></span>
+                <span style={{ height: "67%" }}></span>
+                <span style={{ height: "82%" }}></span>
               </div>
-            </div> */}
-          </div>
-        </section>
 
-        <section className="stats-section">
-          <div className="stats-header">
-            <span>FITFORGE BY THE NUMBERS</span>
-          </div>
-
-          <div className="stats-grid">
-            <div className="stat-item">
-              <span className="stat-number">01</span>
-              <h3>
-                100K<span>+</span>
-              </h3>
-              <p>ACTIVE MEMBERS</p>
+              <div className="chart-days">
+                <span>M</span>
+                <span>T</span>
+                <span>W</span>
+                <span>T</span>
+                <span>F</span>
+                <span>S</span>
+                <span>S</span>
+              </div>
             </div>
 
-            <div className="stat-item">
-              <span className="stat-number">02</span>
-              <h3>
-                2M<span>+</span>
-              </h3>
-              <p>WORKOUTS COMPLETED</p>
-            </div>
+            {/* MOTIVATION */}
+            <div className="image-quote">
+              <p>
+                “A stronger you,
+                <br />a brighter tomorrow.”
+              </p>
 
-            <div className="stat-item">
-              <span className="stat-number">03</span>
-              <h3>
-                500<span>+</span>
-              </h3>
-              <p>TRAINING PROGRAMS</p>
-            </div>
-
-            <div className="stat-item">
-              <span className="stat-number">04</span>
-              <h3>
-                98<span>%</span>
-              </h3>
-              <p>MEMBER SATISFACTION</p>
+              <span></span>
             </div>
           </div>
         </section>
 
+        {/* ================= FEATURE CARDS ================= */}
+        <section className="feature-strip">
+          <div className="feature-box">
+            <div className="feature-icon">♢</div>
+
+            <div>
+              <h3>Personalized Workout Plans</h3>
+              <p>Programs for every fitness level</p>
+            </div>
+          </div>
+
+          <div className="feature-box">
+            <div className="feature-icon">◉</div>
+
+            <div>
+              <h3>Nutrition Guidance</h3>
+              <p>Fuel your progress</p>
+            </div>
+          </div>
+
+          <div className="feature-box">
+            <div className="feature-icon">↗</div>
+
+            <div>
+              <h3>Track Your Progress</h3>
+              <p>See your real results</p>
+            </div>
+          </div>
+
+          <div className="feature-box">
+            <div className="feature-icon">♧</div>
+
+            <div>
+              <h3>Supportive Community</h3>
+              <p>You're not alone</p>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= BRAND STATEMENT ================= */}
+        <section className="brand-section">
+          <div className="brand-watermark">FITNESS</div>
+
+          <div className="brand-content">
+            <div className="brand-line">
+              <span>MORE THAN A WORKOUT</span>
+              <i></i>
+              <span>A BETTER YOU</span>
+            </div>
+
+            <div className="brand-values">
+              <span>FITNESS</span>
+              <b>•</b>
+
+              <span>DISCIPLINE</span>
+              <b>•</b>
+
+              <span>CONSISTENCY</span>
+              <b>•</b>
+
+              <span>PROGRESS</span>
+              <b>•</b>
+
+              <span>CONFIDENCE</span>
+              <b>•</b>
+
+              <span>HEALTH</span>
+              <b>•</b>
+
+              <span>HAPPINESS</span>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= PROGRAMS ================= */}
         <section id="programs" className="scroll-section">
           <Programs />
         </section>
 
+        {/* ================= TRAINERS ================= */}
         <section id="trainers" className="scroll-section">
           <Trainers />
         </section>
 
+        {/* ================= PRICING ================= */}
         <section id="pricing" className="scroll-section">
           <Pricing />
         </section>
+
+        {/* ================= CONTACT ================= */}
         <section id="contact" className="scroll-section">
           <Contact />
         </section>

@@ -527,6 +527,74 @@
   box-shadow: 0 12px 35px rgba(182, 255, 0, 0.2);
 }
 
+/* =========================================================
+   WORKOUT COMPLETION
+========================================================= */
+
+.workout-heading-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.complete-workout-button {
+  border: 1px solid #b6ff00;
+  background: #b6ff00;
+  color: #050505;
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.complete-workout-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(182, 255, 0, 0.2);
+}
+
+.complete-workout-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+}
+
+.complete-workout-button.completed {
+  background: transparent;
+  color: #b6ff00;
+}
+
+.workout-completion-message {
+  width: 100%;
+  margin: 18px 0 0;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.workout-completion-message.success {
+  color: #b6ff00;
+}
+
+.workout-completion-message.error {
+  color: #ff5c5c;
+}
+
+@media (max-width: 600px) {
+  .workout-heading-actions {
+    width: 100%;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .complete-workout-button {
+    width: 100%;
+  }
+}
+
 /* =========================
    RESPONSIVE
 ========================= */

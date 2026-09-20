@@ -160,13 +160,14 @@
 ========================= */
 
 .programs-hero .primary-button {
+  position: relative;
+
   display: inline-flex;
 
   align-items: center;
-  text-decoration: none;
   justify-content: center;
 
-  gap: 20px;
+  gap: 12px;
 
   margin-top: 35px;
 
@@ -176,11 +177,11 @@
 
   padding: 0 24px;
 
-  border: 1px solid #b1f800;
+  border: 1px solid #b6ff00;
 
   border-radius: 999px;
 
-  background: #b1f800;
+  background: #b6ff00;
 
   color: #080808;
 
@@ -188,26 +189,93 @@
 
   font-weight: 800;
 
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
 
   text-transform: uppercase;
 
+  text-decoration: none;
+
   cursor: pointer;
+
+  overflow: hidden;
 
   transition:
     transform 0.25s ease,
     background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
     box-shadow 0.25s ease;
 }
+
+/* shine */
+
+.programs-hero .primary-button::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 70%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.18),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+
+  transition: left 0.6s ease;
+
+  pointer-events: none;
+}
+
+.programs-hero .primary-button:hover::before {
+  left: 140%;
+}
+
+/* text */
+
+.programs-hero .primary-button {
+  z-index: 1;
+}
+
+.programs-hero .primary-button span {
+  position: relative;
+
+  z-index: 2;
+
+  transition: color 0.25s ease;
+}
+
+/* hover */
 
 .programs-hero .primary-button:hover {
   transform: translateY(-3px);
 
-  background: #c5ff33;
+  background: #080808;
+
+  border-color: rgba(182, 255, 0, 0.65);
+
+  color: #b6ff00;
 
   box-shadow:
-    0 10px 35px rgba(177, 248, 0, 0.2),
-    0 0 25px rgba(177, 248, 0, 0.12);
+    0 10px 35px rgba(182, 255, 0, 0.18),
+    0 0 35px rgba(182, 255, 0, 0.08);
+}
+
+.programs-hero .primary-button:hover span {
+  color: #b6ff00;
+}
+
+/* active */
+
+.programs-hero .primary-button:active {
+  transform: translateY(0);
 }
 
 /* =========================
@@ -346,19 +414,24 @@
 
   cursor: pointer;
 
-  transition: all 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-/* hover */
+/* filter hover */
 
 .program-filter button:hover {
-  background: #b6ff00;
+  background: #080808;
 
-  color: #080808;
+  color: #b6ff00;
 
-  border-color: #b6ff00;
+  border-color: rgba(182, 255, 0, 0.5);
 
-  box-shadow: 0 0 20px rgba(182, 255, 0, 0.2);
+  box-shadow: 0 0 20px rgba(182, 255, 0, 0.08);
 
   transform: translateY(-2px);
 }
@@ -372,7 +445,19 @@
 
   border-color: #b6ff00;
 
-  box-shadow: 0 0 20px rgba(182, 255, 0, 0.2);
+  box-shadow: 0 0 20px rgba(182, 255, 0, 0.15);
+}
+
+/* selected hover */
+
+.program-filter .filter-active:hover {
+  background: #080808;
+
+  color: #b6ff00;
+
+  border-color: rgba(182, 255, 0, 0.65);
+
+  box-shadow: 0 0 25px rgba(182, 255, 0, 0.12);
 }
 
 /* =========================
@@ -446,34 +531,107 @@
   font-size: 14px;
 }
 
-/* button */
+/* =========================
+   PROGRAM CARD BUTTON
+========================= */
 
 .program-item button {
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
   margin-top: 25px;
 
-  padding: 13px 20px;
+  min-height: 44px;
 
-  background: #b1f800;
+  padding: 0 20px;
+
+  background: #b6ff00;
 
   color: #080808;
 
-  border: none;
+  border: 1px solid #b6ff00;
 
   border-radius: 7px;
 
+  font-family: inherit;
+
+  font-size: 11px;
+
   font-weight: 800;
+
+  letter-spacing: 0.6px;
+
+  text-transform: uppercase;
 
   cursor: pointer;
 
+  overflow: hidden;
+
   transition:
-    transform 0.2s ease,
-    background 0.2s ease;
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
+/* shine */
+
+.program-item button::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 70%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.18),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+
+  transition: left 0.6s ease;
+
+  pointer-events: none;
+}
+
+.program-item button:hover::before {
+  left: 140%;
+}
+
+/* hover */
+
 .program-item button:hover {
-  background: #c5ff33;
+  background: #080808;
+
+  color: #b6ff00;
+
+  border-color: rgba(182, 255, 0, 0.65);
 
   transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 25px rgba(182, 255, 0, 0.16),
+    0 0 25px rgba(182, 255, 0, 0.06);
+}
+
+/* button active */
+
+.program-item button:active {
+  transform: translateY(0);
 }
 
 /* =========================
@@ -500,6 +658,7 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
 
   border-radius: 28px;
+
   text-decoration: none;
 }
 
@@ -583,14 +742,19 @@
   line-height: 1.7;
 }
 
-/* CTA button */
+/* =========================
+   CTA BUTTON
+========================= */
 
 .programs-cta .primary-button {
+  position: relative;
+
   display: inline-flex;
 
   align-items: center;
-
   justify-content: center;
+
+  gap: 12px;
 
   min-width: 180px;
 
@@ -610,26 +774,75 @@
 
   font-weight: 800;
 
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
 
   text-transform: uppercase;
 
   cursor: pointer;
+
   text-decoration: none;
+
+  overflow: hidden;
+
   transition:
     transform 0.25s ease,
-    box-shadow 0.25s ease,
-    background 0.25s ease;
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
 }
+
+/* shine */
+
+.programs-cta .primary-button::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 70%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.18),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+
+  transition: left 0.6s ease;
+
+  pointer-events: none;
+}
+
+.programs-cta .primary-button:hover::before {
+  left: 140%;
+}
+
+/* hover */
 
 .programs-cta .primary-button:hover {
   transform: translateY(-3px);
 
-  background: #c5ff33;
+  background: #080808;
+
+  color: #b6ff00;
+
+  border-color: rgba(182, 255, 0, 0.65);
 
   box-shadow:
-    0 10px 35px rgba(182, 255, 0, 0.25),
-    0 0 25px rgba(182, 255, 0, 0.15);
+    0 10px 35px rgba(182, 255, 0, 0.18),
+    0 0 35px rgba(182, 255, 0, 0.08);
+}
+
+/* active */
+
+.programs-cta .primary-button:active {
+  transform: translateY(0);
 }
 
 /* =========================
@@ -727,11 +940,213 @@
     font-size: 24px;
   }
 
+  .program-item button {
+    min-height: 43px;
+
+    padding: 0 17px;
+
+    font-size: 10px;
+  }
+
   .programs-cta {
     margin: 70px 6% 60px;
 
     padding: 70px 25px;
 
     border-radius: 20px;
+  }
+
+  /* =========================================================
+     PROGRAM SECTION HEADING - MOBILE FIX
+  ========================================================= */
+
+  .program-list .section-heading {
+    width: 100%;
+  }
+
+  /* =========================================================
+     TABLET
+  ========================================================= */
+
+  @media (max-width: 900px) {
+    .program-list .section-heading {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  /* =========================================================
+     MOBILE
+  ========================================================= */
+
+  @media (max-width: 600px) {
+    .program-list .section-heading {
+      display: block !important;
+
+      width: 100%;
+      max-width: 100%;
+
+      margin-left: auto;
+      margin-right: auto;
+
+      text-align: center;
+
+      grid-template-columns: none !important;
+      grid-template-areas: none !important;
+      grid-template-rows: none !important;
+
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    /* EXPLORE PROGRAMS */
+
+    .program-list .section-heading .eyebrow {
+      display: block;
+
+      width: 100%;
+
+      margin: 0 0 16px;
+
+      text-align: center;
+    }
+
+    /* FIND YOUR PERFECT PLAN */
+
+    .program-list .section-heading h2 {
+      display: block;
+
+      width: 100%;
+      max-width: 350px;
+
+      margin: 0 auto 20px;
+
+      text-align: center;
+
+      font-size: clamp(42px, 12vw, 58px);
+
+      line-height: 0.94;
+
+      letter-spacing: -2px;
+    }
+
+    /* DESCRIPTION */
+
+    .program-list .section-heading > p:last-child {
+      display: block;
+
+      width: 100%;
+      max-width: 330px;
+
+      margin: 0 auto;
+
+      text-align: center;
+
+      font-size: 14px;
+
+      line-height: 1.7;
+
+      color: #888;
+    }
+
+    /* FILTER */
+
+    .program-filter {
+      width: 100%;
+
+      box-sizing: border-box;
+
+      margin-top: 35px;
+
+      padding: 0;
+
+      justify-content: center;
+
+      gap: 8px;
+    }
+
+    .program-filter button {
+      flex-shrink: 0;
+
+      height: 40px;
+
+      padding: 0 15px;
+
+      font-size: 10px;
+    }
+
+    /* PROGRAM GRID */
+
+    .programs-grid {
+      width: 100%;
+
+      grid-template-columns: minmax(0, 1fr);
+
+      margin-top: 35px;
+    }
+
+    /* PROGRAM CARD */
+
+    .program-item {
+      width: 100%;
+
+      box-sizing: border-box;
+
+      min-width: 0;
+
+      padding: 25px;
+    }
+  }
+
+  /* =========================================================
+     SMALL MOBILE
+  ========================================================= */
+
+  @media (max-width: 400px) {
+    .program-list .section-heading h2 {
+      max-width: 320px;
+
+      font-size: 43px;
+
+      letter-spacing: -1.8px;
+    }
+
+    .program-list .section-heading > p:last-child {
+      max-width: 300px;
+
+      font-size: 13px;
+    }
+
+    .program-filter {
+      justify-content: flex-start;
+
+      gap: 7px;
+    }
+
+    .program-filter button {
+      padding: 0 13px;
+
+      font-size: 9px;
+    }
+  }
+
+  /* =========================================================
+     VERY SMALL MOBILE
+  ========================================================= */
+
+  @media (max-width: 360px) {
+    .program-list {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .program-list .section-heading h2 {
+      font-size: 40px;
+    }
+
+    .program-list .section-heading > p:last-child {
+      max-width: 285px;
+    }
   }
 }

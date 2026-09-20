@@ -4,14 +4,12 @@
 
 .navbar {
   position: fixed;
-
   top: 0;
   left: 0;
-
   z-index: 1000;
 
   width: 100%;
-  height: 78px;
+  height: 68px;
 
   padding: 0 6%;
 
@@ -36,13 +34,16 @@
 .logo {
   color: #ffffff;
 
-  font-size: 24px;
-
+  font-size: 23px;
   font-weight: 900;
 
   letter-spacing: -1px;
 
   white-space: nowrap;
+
+  cursor: pointer;
+
+  user-select: none;
 }
 
 .logo span {
@@ -55,10 +56,9 @@
 
 .navbar nav {
   display: flex;
-
   align-items: center;
 
-  gap: 42px;
+  gap: 40px;
 }
 
 .navbar nav a {
@@ -69,13 +69,11 @@
   font-family: Arial, Helvetica, sans-serif;
 
   font-size: 11px;
-
   font-weight: 700;
 
   letter-spacing: 1.5px;
 
   text-transform: uppercase;
-
   text-decoration: none;
 
   transition:
@@ -105,7 +103,7 @@
   position: absolute;
 
   left: 0;
-  bottom: -9px;
+  bottom: -8px;
 
   width: 0;
   height: 1px;
@@ -121,11 +119,55 @@
 }
 
 /* =========================================
-   START TRAINING BUTTON
+   DESKTOP USER AREA
+========================================= */
+
+.desktop-user-area {
+  display: flex;
+  align-items: center;
+}
+
+.nav-user-area {
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+}
+
+.nav-user-name {
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  letter-spacing: 0.3px;
+
+  white-space: nowrap;
+}
+
+.nav-user-name::before {
+  content: "";
+
+  display: inline-block;
+
+  width: 7px;
+  height: 7px;
+
+  margin-right: 8px;
+
+  border-radius: 50%;
+
+  background: #b6ff00;
+
+  box-shadow: 0 0 8px rgba(182, 255, 0, 0.7);
+}
+
+/* =========================================
+   START TRAINING / LOGOUT BUTTON
 ========================================= */
 
 .nav-button {
-  padding: 12px 22px;
+  padding: 11px 20px;
 
   border: 1px solid #b1f800;
 
@@ -136,7 +178,6 @@
   color: #080808;
 
   font-size: 10px;
-
   font-weight: 800;
 
   letter-spacing: 1px;
@@ -148,6 +189,7 @@
   transition:
     transform 0.25s ease,
     background 0.25s ease,
+    color 0.25s ease,
     box-shadow 0.25s ease;
 }
 
@@ -159,6 +201,141 @@
   transform: translateY(-2px);
 
   box-shadow: 0 8px 25px rgba(177, 248, 0, 0.12);
+}
+
+/* =========================================
+   MOBILE USER AREA
+========================================= */
+
+.mobile-user-area {
+  display: none;
+}
+
+/* =========================================
+   HAMBURGER
+========================================= */
+
+.hamburger {
+  display: none;
+
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  border-radius: 6px;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  gap: 5px;
+
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.hamburger:hover {
+  border-color: #b1f800;
+
+  background: rgba(177, 248, 0, 0.05);
+}
+
+.hamburger span {
+  display: block;
+
+  width: 20px;
+  height: 2px;
+
+  background: #ffffff;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    background 0.3s ease;
+}
+
+.hamburger:hover span {
+  background: #b1f800;
+}
+
+/* =========================================
+   HAMBURGER ACTIVE → X
+========================================= */
+
+.hamburger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* =========================================
+   LOGOUT MESSAGE
+========================================= */
+.logout-message {
+  position: fixed;
+  top: 80px;
+  right: 30px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  background: #111;
+  border: 1px solid #afff00;
+  border-radius: 10px;
+
+  color: #afff00;
+  font-size: 14px;
+  font-weight: 600;
+
+  box-shadow: 0 4px 18px rgba(175, 255, 0, 0.12);
+
+  animation: logoutSlide 0.3s ease;
+}
+
+.logout-message span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+
+  background: #afff00;
+  color: #000;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  box-shadow: 0 0 8px rgba(175, 255, 0, 0.35);
+}
+@keyframes logoutSlide {
+  from {
+    opacity: 0;
+
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
 }
 
 /* =========================================
@@ -181,7 +358,7 @@
   }
 
   .nav-button {
-    padding: 11px 16px;
+    padding: 10px 16px;
 
     font-size: 9px;
   }
@@ -193,7 +370,7 @@
 
 @media (max-width: 650px) {
   .navbar {
-    height: 68px;
+    height: 62px;
 
     padding: 0 5%;
   }
@@ -202,13 +379,171 @@
     font-size: 20px;
   }
 
-  .navbar nav {
+  /* Hide desktop user area */
+
+  .desktop-user-area {
     display: none;
   }
 
-  .nav-button {
-    padding: 10px 15px;
+  /* Show hamburger */
 
-    font-size: 9px;
+  .hamburger {
+    display: flex;
+
+    position: relative;
+
+    z-index: 1100;
+  }
+
+  /* Mobile navigation */
+
+  .navbar nav {
+    position: absolute;
+
+    top: 62px;
+    left: 0;
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 0;
+
+    padding: 8px 5% 22px;
+
+    box-sizing: border-box;
+
+    background: rgba(8, 8, 8, 0.98);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    transform: translateY(-120%);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  /* Open menu */
+
+  .navbar nav.mobile-open {
+    transform: translateY(0);
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+  }
+
+  /* Mobile links */
+
+  .navbar nav a {
+    width: 100%;
+
+    padding: 15px 0;
+
+    box-sizing: border-box;
+
+    color: rgba(255, 255, 255, 0.65);
+
+    font-size: 11px;
+
+    letter-spacing: 1.4px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .navbar nav a:hover {
+    color: #ffffff;
+
+    transform: none;
+  }
+
+  .navbar nav a.active {
+    color: #b1f800;
+  }
+
+  /* Remove underline on mobile */
+
+  .navbar nav a::after {
+    display: none;
+  }
+
+  /* Mobile user */
+
+  .mobile-user-area {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 12px;
+
+    padding-top: 18px;
+  }
+
+  .mobile-user-area .nav-user-name {
+    padding: 4px 0;
+
+    font-size: 12px;
+  }
+
+  .mobile-user-area .nav-button {
+    width: 100%;
+
+    height: 43px;
+
+    padding: 10px;
+  }
+
+  /* Logout message */
+
+  .logout-message {
+    top: 75px;
+
+    right: 15px;
+    left: 15px;
+
+    justify-content: center;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+  .navbar {
+    height: 60px;
+
+    padding: 0 5%;
+  }
+
+  .logo {
+    font-size: 19px;
+  }
+
+  .hamburger {
+    width: 39px;
+    height: 39px;
+  }
+
+  .navbar nav {
+    top: 60px;
   }
 }
