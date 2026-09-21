@@ -1129,3 +1129,64 @@
     font-size: 12px;
   }
 }
+/* =========================
+   PROGRAMS RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+  .programs-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .program-item {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .programs-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 35px;
+  }
+
+  .program-item {
+    width: 100%;
+    min-width: 0;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+
+  .program-item h3 {
+    margin-top: 45px;
+    font-size: 25px;
+  }
+
+  .program-item p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 400px) {
+  .program-list {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .programs-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: 20px;
+  }
+
+  .program-item {
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .program-item h3 {
+    font-size: 23px;
+  }
+}
