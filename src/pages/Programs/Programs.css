@@ -633,69 +633,124 @@
 .program-item button:active {
   transform: translateY(0);
 }
-
 /* =========================
-   PROGRAMS CTA
+   PROGRAMS CTA - PREMIUM
 ========================= */
 
 .programs-cta {
   position: relative;
 
+  width: calc(100% - 12%);
+  max-width: none;
+
+  margin: 110px 6% 90px;
+
+  padding: 100px 70px;
+
   overflow: hidden;
 
-  max-width: 1100px;
-
-  margin: 100px auto 80px;
-
-  padding: 90px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   text-align: center;
 
   background:
-    radial-gradient(circle at 50% 0%, rgba(182, 255, 0, 0.12), transparent 55%),
-    rgba(255, 255, 255, 0.025);
+    radial-gradient(circle at 50% 0%, rgba(182, 255, 0, 0.16), transparent 35%),
+    radial-gradient(
+      circle at 10% 100%,
+      rgba(182, 255, 0, 0.05),
+      transparent 30%
+    ),
+    #0b0b0b;
 
   border: 1px solid rgba(255, 255, 255, 0.08);
 
-  border-radius: 28px;
+  border-radius: 30px;
 
-  text-decoration: none;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  isolation: isolate;
 }
 
-/* subtle glow */
+/* =========================
+   HUGE BACKGROUND TEXT
+========================= */
+
+.programs-cta::after {
+  content: "FITFORGE";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: -65px;
+
+  transform: translateX(-50%);
+
+  color: rgba(255, 255, 255, 0.018);
+
+  font-size: clamp(100px, 18vw, 280px);
+
+  font-weight: 900;
+
+  line-height: 0.8;
+
+  letter-spacing: -12px;
+
+  white-space: nowrap;
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+/* =========================
+   TOP GLOW
+========================= */
 
 .programs-cta::before {
   content: "";
 
   position: absolute;
 
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
 
-  top: -250px;
+  top: -380px;
   left: 50%;
 
   transform: translateX(-50%);
 
-  background: rgba(182, 255, 0, 0.08);
+  background: rgba(182, 255, 0, 0.12);
 
   filter: blur(100px);
 
   pointer-events: none;
+
+  z-index: -1;
 }
 
-/* content above glow */
+/* =========================
+   CONTENT
+========================= */
 
 .programs-cta > * {
   position: relative;
 
-  z-index: 1;
+  z-index: 2;
 }
 
-/* eyebrow */
+/* =========================
+   EYEBROW
+========================= */
 
 .programs-cta .eyebrow {
-  margin-bottom: 18px;
+  position: relative;
+
+  margin-bottom: 22px;
 
   color: #b6ff00;
 
@@ -703,43 +758,68 @@
 
   font-weight: 800;
 
-  letter-spacing: 2px;
+  letter-spacing: 3px;
 
   text-transform: uppercase;
 }
 
-/* heading */
+.programs-cta .eyebrow::before {
+  content: "";
+
+  display: inline-block;
+
+  width: 32px;
+  height: 1px;
+
+  margin-right: 12px;
+
+  vertical-align: middle;
+
+  background: #b6ff00;
+
+  box-shadow: 0 0 12px rgba(182, 255, 0, 0.5);
+}
+
+/* =========================
+   HEADING
+========================= */
 
 .programs-cta h2 {
+  max-width: 900px;
+
   margin: 0;
 
   color: #ffffff;
 
-  font-size: clamp(40px, 5vw, 64px);
+  font-size: clamp(48px, 6vw, 82px);
 
   font-weight: 800;
 
-  line-height: 1.05;
+  line-height: 0.95;
 
-  letter-spacing: -2.5px;
+  letter-spacing: -4px;
 }
 
 .programs-cta h2 span {
   color: #b6ff00;
+
+  text-shadow: 0 0 25px rgba(182, 255, 0, 0.12);
 }
 
-/* description */
+/* =========================
+   DESCRIPTION
+========================= */
 
 .programs-cta > p:not(.eyebrow) {
   max-width: 620px;
 
-  margin: 25px auto 32px;
+  margin: 28px auto 36px;
 
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.52);
 
   font-size: 15px;
 
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
 /* =========================
@@ -752,15 +832,16 @@
   display: inline-flex;
 
   align-items: center;
+
   justify-content: center;
 
-  gap: 12px;
+  gap: 16px;
 
-  min-width: 180px;
+  min-width: 205px;
 
-  height: 52px;
+  height: 58px;
 
-  padding: 0 28px;
+  padding: 0 30px;
 
   border: 1px solid #b6ff00;
 
@@ -774,25 +855,65 @@
 
   font-weight: 800;
 
-  letter-spacing: 0.6px;
+  letter-spacing: 0.8px;
 
   text-transform: uppercase;
 
-  cursor: pointer;
-
   text-decoration: none;
+
+  cursor: pointer;
 
   overflow: hidden;
 
+  box-shadow:
+    0 0 0 rgba(182, 255, 0, 0),
+    0 10px 35px rgba(182, 255, 0, 0.08);
+
   transition:
-    transform 0.25s ease,
-    background 0.25s ease,
-    border-color 0.25s ease,
-    color 0.25s ease,
-    box-shadow 0.25s ease;
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-/* shine */
+/* =========================
+   BUTTON ARROW
+========================= */
+
+.programs-cta .primary-button span {
+  position: relative;
+
+  z-index: 2;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 26px;
+  height: 26px;
+
+  border-radius: 50%;
+
+  background: #080808;
+
+  color: #b6ff00;
+
+  font-size: 16px;
+
+  line-height: 1;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+/* =========================
+   BUTTON SHINE
+========================= */
 
 .programs-cta .primary-button::before {
   content: "";
@@ -808,7 +929,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.18),
+    rgba(255, 255, 255, 0.3),
     transparent
   );
 
@@ -823,330 +944,188 @@
   left: 140%;
 }
 
-/* hover */
+/* =========================
+   BUTTON HOVER
+========================= */
 
 .programs-cta .primary-button:hover {
-  transform: translateY(-3px);
+  transform: translateY(-5px);
 
   background: #080808;
 
+  border-color: #b6ff00;
+
   color: #b6ff00;
 
-  border-color: rgba(182, 255, 0, 0.65);
-
   box-shadow:
-    0 10px 35px rgba(182, 255, 0, 0.18),
+    0 15px 45px rgba(182, 255, 0, 0.18),
     0 0 35px rgba(182, 255, 0, 0.08);
 }
 
-/* active */
+.programs-cta .primary-button:hover span {
+  transform: translateX(4px);
 
-.programs-cta .primary-button:active {
-  transform: translateY(0);
+  background: #b6ff00;
+
+  color: #080808;
 }
 
 /* =========================
-   RESPONSIVE
+   BUTTON ACTIVE
+========================= */
+
+.programs-cta .primary-button:active {
+  transform: translateY(-1px);
+}
+
+/* =========================
+   BOTTOM ACCENT LINE
+========================= */
+
+.programs-cta {
+  --cta-line-width: 120px;
+}
+
+.programs-cta .primary-button::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: 0;
+  left: 50%;
+
+  width: 0;
+  height: 2px;
+
+  transform: translateX(-50%);
+
+  background: #b6ff00;
+
+  box-shadow: 0 0 15px rgba(182, 255, 0, 0.7);
+
+  transition: width 0.4s ease;
+
+  pointer-events: none;
+}
+
+.programs-cta .primary-button:hover::after {
+  width: var(--cta-line-width);
+}
+
+/* =========================
+   TABLET
 ========================= */
 
 @media (max-width: 900px) {
-  .programs-hero {
-    min-height: auto;
+  .programs-cta {
+    width: calc(100% - 10%);
 
-    padding: 100px 6% 80px;
+    margin: 90px 5% 70px;
 
-    flex-direction: column;
+    padding: 85px 45px;
 
-    align-items: flex-start;
-
-    gap: 60px;
+    border-radius: 26px;
   }
 
-  .programs-hero-stat {
-    margin-right: 0;
+  .programs-cta h2 {
+    font-size: clamp(44px, 7vw, 68px);
 
-    min-width: 140px;
+    letter-spacing: -3px;
   }
 
-  .programs-grid {
-    grid-template-columns: 1fr;
-  }
+  .programs-cta > p:not(.eyebrow) {
+    max-width: 560px;
 
-  .program-list {
-    padding: 80px 5%;
+    font-size: 14px;
   }
 }
 
+/* =========================
+   MOBILE
+========================= */
+
 @media (max-width: 600px) {
-  .programs-hero {
-    padding: 90px 6% 70px;
+  .programs-cta {
+    width: calc(100% - 12%);
+
+    margin: 70px 6% 60px;
+
+    padding: 70px 24px;
+
+    border-radius: 22px;
   }
 
-  .programs-hero h1 {
-    font-size: clamp(44px, 13vw, 65px);
+  .programs-cta::after {
+    bottom: -20px;
+
+    font-size: 90px;
+
+    letter-spacing: -6px;
+  }
+
+  .programs-cta .eyebrow {
+    margin-bottom: 18px;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+  }
+
+  .programs-cta .eyebrow::before {
+    width: 22px;
+
+    margin-right: 8px;
+  }
+
+  .programs-cta h2 {
+    max-width: 350px;
+
+    font-size: clamp(40px, 11vw, 56px);
+
+    line-height: 0.98;
 
     letter-spacing: -2.5px;
   }
 
-  .programs-hero-content > p:last-of-type {
-    font-size: 14px;
+  .programs-cta > p:not(.eyebrow) {
+    max-width: 330px;
+
+    margin: 22px auto 30px;
+
+    font-size: 13px;
+
+    line-height: 1.7;
   }
 
-  .programs-hero-stat {
-    width: 100%;
+  .programs-cta .primary-button {
+    min-width: 190px;
 
-    box-sizing: border-box;
+    height: 54px;
 
-    padding-left: 20px;
+    padding: 0 24px;
+
+    font-size: 11px;
   }
+}
 
-  .programs-hero::after {
-    font-size: 200px;
+/* =========================
+   SMALL MOBILE
+========================= */
 
-    bottom: -30px;
-  }
-
-  .program-list {
-    padding: 70px 6%;
-  }
-
-  .program-filter {
-    padding: 0;
-
-    justify-content: flex-start;
-  }
-
-  .program-filter button {
-    height: 40px;
-
-    padding: 0 16px;
-
-    font-size: 10px;
-  }
-
-  .programs-grid {
-    margin-top: 35px;
-  }
-
-  .program-item {
-    min-height: 270px;
-
-    padding: 25px;
-  }
-
-  .program-item h3 {
-    margin-top: 55px;
-
-    font-size: 24px;
-  }
-
-  .program-item button {
-    min-height: 43px;
-
-    padding: 0 17px;
-
-    font-size: 10px;
-  }
-
+@media (max-width: 400px) {
   .programs-cta {
-    margin: 70px 6% 60px;
-
-    padding: 70px 25px;
-
-    border-radius: 20px;
+    padding: 60px 20px;
   }
 
-  /* =========================================================
-     PROGRAM SECTION HEADING - MOBILE FIX
-  ========================================================= */
+  .programs-cta h2 {
+    font-size: 40px;
 
-  .program-list .section-heading {
-    width: 100%;
+    letter-spacing: -2px;
   }
 
-  /* =========================================================
-     TABLET
-  ========================================================= */
+  .programs-cta > p:not(.eyebrow) {
+    max-width: 290px;
 
-  @media (max-width: 900px) {
-    .program-list .section-heading {
-      width: 100%;
-      max-width: 100%;
-    }
-  }
-
-  /* =========================================================
-     MOBILE
-  ========================================================= */
-
-  @media (max-width: 600px) {
-    .program-list .section-heading {
-      display: block !important;
-
-      width: 100%;
-      max-width: 100%;
-
-      margin-left: auto;
-      margin-right: auto;
-
-      text-align: center;
-
-      grid-template-columns: none !important;
-      grid-template-areas: none !important;
-      grid-template-rows: none !important;
-
-      flex-direction: column !important;
-      align-items: center !important;
-      justify-content: center !important;
-    }
-
-    /* EXPLORE PROGRAMS */
-
-    .program-list .section-heading .eyebrow {
-      display: block;
-
-      width: 100%;
-
-      margin: 0 0 16px;
-
-      text-align: center;
-    }
-
-    /* FIND YOUR PERFECT PLAN */
-
-    .program-list .section-heading h2 {
-      display: block;
-
-      width: 100%;
-      max-width: 350px;
-
-      margin: 0 auto 20px;
-
-      text-align: center;
-
-      font-size: clamp(42px, 12vw, 58px);
-
-      line-height: 0.94;
-
-      letter-spacing: -2px;
-    }
-
-    /* DESCRIPTION */
-
-    .program-list .section-heading > p:last-child {
-      display: block;
-
-      width: 100%;
-      max-width: 330px;
-
-      margin: 0 auto;
-
-      text-align: center;
-
-      font-size: 14px;
-
-      line-height: 1.7;
-
-      color: #888;
-    }
-
-    /* FILTER */
-
-    .program-filter {
-      width: 100%;
-
-      box-sizing: border-box;
-
-      margin-top: 35px;
-
-      padding: 0;
-
-      justify-content: center;
-
-      gap: 8px;
-    }
-
-    .program-filter button {
-      flex-shrink: 0;
-
-      height: 40px;
-
-      padding: 0 15px;
-
-      font-size: 10px;
-    }
-
-    /* PROGRAM GRID */
-
-    .programs-grid {
-      width: 100%;
-
-      grid-template-columns: minmax(0, 1fr);
-
-      margin-top: 35px;
-    }
-
-    /* PROGRAM CARD */
-
-    .program-item {
-      width: 100%;
-
-      box-sizing: border-box;
-
-      min-width: 0;
-
-      padding: 25px;
-    }
-  }
-
-  /* =========================================================
-     SMALL MOBILE
-  ========================================================= */
-
-  @media (max-width: 400px) {
-    .program-list .section-heading h2 {
-      max-width: 320px;
-
-      font-size: 43px;
-
-      letter-spacing: -1.8px;
-    }
-
-    .program-list .section-heading > p:last-child {
-      max-width: 300px;
-
-      font-size: 13px;
-    }
-
-    .program-filter {
-      justify-content: flex-start;
-
-      gap: 7px;
-    }
-
-    .program-filter button {
-      padding: 0 13px;
-
-      font-size: 9px;
-    }
-  }
-
-  /* =========================================================
-     VERY SMALL MOBILE
-  ========================================================= */
-
-  @media (max-width: 360px) {
-    .program-list {
-      padding-left: 15px;
-      padding-right: 15px;
-    }
-
-    .program-list .section-heading h2 {
-      font-size: 40px;
-    }
-
-    .program-list .section-heading > p:last-child {
-      max-width: 285px;
-    }
+    font-size: 12px;
   }
 }

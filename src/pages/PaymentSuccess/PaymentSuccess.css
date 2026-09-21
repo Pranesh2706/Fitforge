@@ -5,9 +5,43 @@
 .payment-success-page {
   min-height: 100vh;
 
-  background: #090909;
+  background:
+    radial-gradient(
+      circle at 50% 10%,
+      rgba(177, 248, 0, 0.045),
+      transparent 35%
+    ),
+    #090909;
 
   color: #fff;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+/* =========================
+   BACKGROUND GLOW
+========================= */
+
+.payment-success-page::before {
+  content: "";
+
+  position: fixed;
+
+  width: 500px;
+  height: 500px;
+
+  top: -300px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  background: rgba(177, 248, 0, 0.06);
+
+  filter: blur(120px);
+
+  pointer-events: none;
 }
 
 /* =========================
@@ -20,11 +54,25 @@
   padding: 0 8%;
 
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: rgba(9, 9, 9, 0.75);
+
+  backdrop-filter: blur(12px);
+
+  position: relative;
+
+  z-index: 10;
 }
+
+/* =========================
+   LOGO
+========================= */
 
 .success-logo {
   font-size: 20px;
@@ -38,8 +86,13 @@
   color: #b1f800;
 }
 
+/* =========================
+   SECURE
+========================= */
+
 .success-secure {
   display: flex;
+
   align-items: center;
 
   gap: 7px;
@@ -49,6 +102,8 @@
   font-size: 10px;
 
   font-weight: 600;
+
+  letter-spacing: 0.3px;
 }
 
 /* =========================
@@ -65,6 +120,12 @@
   padding: 80px 24px 110px;
 
   text-align: center;
+
+  position: relative;
+
+  z-index: 2;
+
+  box-sizing: border-box;
 }
 
 /* =========================
@@ -72,28 +133,168 @@
 ========================= */
 
 .success-icon {
-  width: 64px;
-  height: 64px;
+  position: relative;
 
-  margin: 0 auto 25px;
+  width: 90px;
+  height: 90px;
+
+  margin: 0 auto 30px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+}
+
+/* =========================
+   OUTER GLOW
+========================= */
+
+.success-icon::before {
+  content: "";
+
+  position: absolute;
+
+  inset: -12px;
 
   border-radius: 50%;
 
-  background: #b1f800;
+  background: rgba(177, 248, 0, 0.08);
 
-  color: #050505;
+  animation: successPulse 2.2s ease-out infinite;
+}
 
-  font-size: 28px;
+/* =========================
+   OUTER RING
+========================= */
 
-  font-weight: 900;
+.success-icon::after {
+  content: "";
 
-  box-shadow:
-    0 0 0 8px rgba(177, 248, 0, 0.06),
-    0 0 35px rgba(177, 248, 0, 0.12);
+  position: absolute;
+
+  inset: -4px;
+
+  border: 1px solid rgba(177, 248, 0, 0.25);
+
+  border-radius: 50%;
+
+  animation: successRing 0.8s ease-out forwards;
+}
+
+/* =========================
+   SVG
+========================= */
+
+.success-check {
+  position: relative;
+
+  z-index: 2;
+
+  width: 90px;
+  height: 90px;
+
+  overflow: visible;
+}
+
+/* =========================
+   CIRCLE
+========================= */
+
+.success-circle {
+  fill: rgba(177, 248, 0, 0.06);
+
+  stroke: #b1f800;
+
+  stroke-width: 2;
+
+  stroke-dasharray: 151;
+
+  stroke-dashoffset: 151;
+
+  animation: drawCircle 0.8s ease-out 0.1s forwards;
+
+  filter: drop-shadow(0 0 10px rgba(177, 248, 0, 0.35))
+    drop-shadow(0 0 25px rgba(177, 248, 0, 0.12));
+}
+
+/* =========================
+   CHECKMARK
+========================= */
+
+.success-checkmark {
+  fill: none;
+
+  stroke: #b1f800;
+
+  stroke-width: 3;
+
+  stroke-linecap: round;
+
+  stroke-linejoin: round;
+
+  stroke-dasharray: 40;
+
+  stroke-dashoffset: 40;
+
+  animation: drawCheck 0.55s ease-out 0.8s forwards;
+
+  filter: drop-shadow(0 0 6px rgba(177, 248, 0, 0.7));
+}
+
+/* =========================
+   SUCCESS ANIMATIONS
+========================= */
+
+@keyframes drawCircle {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes drawCheck {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes successRing {
+  0% {
+    transform: scale(0.5);
+
+    opacity: 0;
+  }
+
+  60% {
+    transform: scale(1.12);
+
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+
+    opacity: 0.5;
+  }
+}
+
+@keyframes successPulse {
+  0% {
+    transform: scale(0.75);
+
+    opacity: 0;
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1.45);
+
+    opacity: 0;
+  }
 }
 
 /* =========================
@@ -110,6 +311,8 @@
   font-weight: 800;
 
   letter-spacing: 2.5px;
+
+  animation: contentFade 0.6s ease-out 1.15s both;
 }
 
 .success-container h1 {
@@ -122,10 +325,14 @@
   letter-spacing: -3px;
 
   font-weight: 800;
+
+  animation: contentFade 0.7s ease-out 1.25s both;
 }
 
 .success-container h1 span {
   color: #b1f800;
+
+  text-shadow: 0 0 25px rgba(177, 248, 0, 0.08);
 }
 
 .success-message {
@@ -138,6 +345,26 @@
   font-size: 14px;
 
   line-height: 1.6;
+
+  animation: contentFade 0.7s ease-out 1.4s both;
+}
+
+/* =========================
+   CONTENT ANIMATION
+========================= */
+
+@keyframes contentFade {
+  from {
+    opacity: 0;
+
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
 }
 
 /* =========================
@@ -151,14 +378,48 @@
 
   padding: 28px;
 
-  background: #111;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.015)
+    ),
+    #111;
 
   border: 1px solid rgba(177, 248, 0, 0.25);
 
+  border-radius: 12px;
+
   text-align: left;
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+
+  animation: cardReveal 0.8s ease-out 1.55s both;
 }
 
-/* CARD TOP */
+/* =========================
+   CARD REVEAL
+========================= */
+
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+
+    transform: translateY(25px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================
+   CARD TOP
+========================= */
 
 .membership-card-top {
   display: flex;
@@ -192,7 +453,9 @@
   letter-spacing: 1px;
 }
 
-/* ACTIVE */
+/* =========================
+   ACTIVE STATUS
+========================= */
 
 .active-status {
   display: flex;
@@ -205,6 +468,8 @@
 
   border: 1px solid rgba(177, 248, 0, 0.25);
 
+  border-radius: 5px;
+
   color: #b1f800;
 
   font-size: 9px;
@@ -212,17 +477,38 @@
   font-weight: 800;
 
   letter-spacing: 1px;
+
+  background: rgba(177, 248, 0, 0.025);
 }
 
 .active-status span {
   width: 6px;
   height: 6px;
 
+  flex-shrink: 0;
+
   border-radius: 50%;
 
   background: #b1f800;
 
   box-shadow: 0 0 8px rgba(177, 248, 0, 0.7);
+
+  animation: statusPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform: scale(1.15);
+  }
 }
 
 /* =========================
@@ -236,7 +522,12 @@
 
   margin: 24px 0;
 
-  background: rgba(255, 255, 255, 0.08);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(177, 248, 0, 0.12),
+    rgba(255, 255, 255, 0.08)
+  );
 }
 
 /* =========================
@@ -320,13 +611,19 @@
 
   gap: 12px;
 
-  margin-top: 28px;
+  margin-top: 30px;
+
+  animation: contentFade 0.7s ease-out 1.75s both;
 }
 
 .success-button {
+  position: relative;
+
   padding: 13px 24px;
 
   border: 1px solid #b1f800;
+
+  border-radius: 6px;
 
   font-family: inherit;
 
@@ -336,20 +633,38 @@
 
   cursor: pointer;
 
-  transition: all 0.2s ease;
+  overflow: hidden;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
 }
+
+/* =========================
+   PRIMARY
+========================= */
 
 .success-button.primary {
   background: #b1f800;
 
   color: #050505;
+
+  box-shadow: 0 8px 25px rgba(177, 248, 0, 0.08);
 }
 
 .success-button.primary:hover {
   background: #c4ff3a;
 
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+
+  box-shadow: 0 12px 30px rgba(177, 248, 0, 0.16);
 }
+
+/* =========================
+   SECONDARY
+========================= */
 
 .success-button.secondary {
   background: transparent;
@@ -361,6 +676,10 @@
   background: #b1f800;
 
   color: #050505;
+
+  transform: translateY(-3px);
+
+  box-shadow: 0 12px 30px rgba(177, 248, 0, 0.12);
 }
 
 /* =========================
@@ -375,6 +694,40 @@
   font-size: 10px;
 
   letter-spacing: 0.3px;
+
+  animation: contentFade 0.7s ease-out 1.9s both;
+}
+
+/* =========================
+   ERROR STATE
+========================= */
+
+.error-container {
+  padding-top: 120px;
+}
+
+.error-icon {
+  width: 64px;
+  height: 64px;
+
+  margin-bottom: 25px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  color: #777;
+
+  font-size: 25px;
+
+  font-weight: 800;
+}
+
+.error-icon::before,
+.error-icon::after {
+  display: none;
 }
 
 /* =========================
@@ -383,25 +736,61 @@
 
 @media (max-width: 600px) {
   .success-header {
+    height: 68px;
+
     padding: 0 6%;
+  }
+
+  .success-logo {
+    font-size: 18px;
+  }
+
+  .success-secure {
+    font-size: 9px;
   }
 
   .success-container {
     padding: 65px 18px 80px;
   }
 
+  .success-icon {
+    width: 78px;
+    height: 78px;
+
+    margin-bottom: 25px;
+  }
+
+  .success-check {
+    width: 78px;
+    height: 78px;
+  }
+
   .success-container h1 {
-    letter-spacing: -2px;
+    font-size: clamp(42px, 12vw, 58px);
+
+    letter-spacing: -2.5px;
+  }
+
+  .success-message {
+    margin: 20px auto 35px;
+
+    font-size: 13px;
   }
 
   .membership-card {
     padding: 22px 20px;
+
+    border-radius: 10px;
   }
 
   .membership-card-top {
     align-items: flex-start;
 
     flex-direction: column;
+  }
+
+  .membership-card h2 {
+    font-size: 26px;
   }
 
   .membership-details {
@@ -420,13 +809,53 @@
 
   .transaction-details strong {
     text-align: left;
+
+    max-width: 100%;
   }
 
   .success-actions {
     flex-direction: column;
+
+    gap: 10px;
   }
 
   .success-button {
     width: 100%;
+
+    min-height: 48px;
+  }
+
+  .success-footer-text {
+    font-size: 9px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 380px) {
+  .success-container {
+    padding-left: 15px;
+
+    padding-right: 15px;
+  }
+
+  .success-container h1 {
+    font-size: 40px;
+
+    letter-spacing: -2px;
+  }
+
+  .membership-card {
+    padding: 20px 17px;
+  }
+
+  .membership-card h2 {
+    font-size: 24px;
+  }
+
+  .success-secure {
+    display: none;
   }
 }

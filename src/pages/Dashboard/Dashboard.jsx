@@ -39,11 +39,14 @@ function Dashboard() {
           return;
         }
 
-        const response = await fetch("http://localhost:5000/api/auth/me", {
-          headers: {
-            Authorization: `Bearer ${token}`,
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/auth/me`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           },
-        });
+        );
 
         const data = await response.json();
 
@@ -82,7 +85,7 @@ function Dashboard() {
         }
 
         const response = await fetch(
-          "http://localhost:5000/api/dashboard/stats",
+          `${import.meta.env.VITE_API_URL}/api/dashboard/stats`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -118,7 +121,7 @@ function Dashboard() {
         }
 
         const response = await fetch(
-          "http://localhost:5000/api/dashboard/recent-workouts",
+          `${import.meta.env.VITE_API_URL}/api/dashboard/recent-workouts`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

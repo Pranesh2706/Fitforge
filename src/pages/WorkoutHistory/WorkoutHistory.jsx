@@ -20,7 +20,7 @@ function WorkoutHistory() {
         }
 
         const response = await fetch(
-          "http://localhost:5000/api/workout-history",
+          `${import.meta.env.VITE_API_URL}/api/workout-history`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

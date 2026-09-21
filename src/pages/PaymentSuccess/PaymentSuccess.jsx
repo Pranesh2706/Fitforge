@@ -7,11 +7,15 @@ function PaymentSuccess() {
 
   const payment = location.state;
 
+  /* =========================
+     NO PAYMENT STATE
+  ========================= */
+
   if (!payment) {
     return (
       <div className="payment-success-page">
-        <div className="success-container">
-          <div className="success-icon">!</div>
+        <div className="success-container error-container">
+          <div className="success-icon error-icon">!</div>
 
           <p className="success-eyebrow">PAYMENT INFORMATION</p>
 
@@ -26,7 +30,7 @@ function PaymentSuccess() {
           </p>
 
           <button
-            className="success-button"
+            className="success-button primary"
             onClick={() => navigate("/pricing")}
           >
             Back to Pricing
@@ -36,9 +40,15 @@ function PaymentSuccess() {
     );
   }
 
+  /* =========================
+     PAYMENT SUCCESS
+  ========================= */
+
   return (
     <div className="payment-success-page">
-      {/* Header */}
+      {/* =========================
+          HEADER
+      ========================= */}
 
       <header className="success-header">
         <div className="success-logo">
@@ -51,10 +61,26 @@ function PaymentSuccess() {
         </div>
       </header>
 
-      {/* Main */}
+      {/* =========================
+          MAIN
+      ========================= */}
 
       <main className="success-container">
-        <div className="success-icon">✓</div>
+        {/* =========================
+            ANIMATED SUCCESS ICON
+        ========================= */}
+
+        <div className="success-icon">
+          <svg className="success-check" viewBox="0 0 52 52" aria-hidden="true">
+            <circle className="success-circle" cx="26" cy="26" r="24" />
+
+            <path className="success-checkmark" d="M14 27l8 8 16-18" />
+          </svg>
+        </div>
+
+        {/* =========================
+            SUCCESS TITLE
+        ========================= */}
 
         <p className="success-eyebrow">PAYMENT SUCCESSFUL</p>
 
@@ -70,9 +96,13 @@ function PaymentSuccess() {
             : "Your membership is now active."}
         </p>
 
-        {/* Membership Card */}
+        {/* =========================
+            MEMBERSHIP CARD
+        ========================= */}
 
         <div className="membership-card">
+          {/* CARD TOP */}
+
           <div className="membership-card-top">
             <div>
               <p className="card-label">MEMBERSHIP PLAN</p>
@@ -87,6 +117,8 @@ function PaymentSuccess() {
           </div>
 
           <div className="membership-divider"></div>
+
+          {/* MEMBERSHIP DETAILS */}
 
           <div className="membership-details">
             <div>
@@ -107,20 +139,26 @@ function PaymentSuccess() {
 
           <div className="membership-divider"></div>
 
+          {/* TRANSACTION DETAILS */}
+
           <div className="transaction-details">
             <div>
               <span>Payment ID</span>
+
               <strong>{payment.paymentId}</strong>
             </div>
 
             <div>
               <span>Order ID</span>
+
               <strong>{payment.orderId}</strong>
             </div>
           </div>
         </div>
 
-        {/* Buttons */}
+        {/* =========================
+            ACTION BUTTONS
+        ========================= */}
 
         <div className="success-actions">
           <button
@@ -137,6 +175,10 @@ function PaymentSuccess() {
             Explore Workouts
           </button>
         </div>
+
+        {/* =========================
+            FOOTER TEXT
+        ========================= */}
 
         <p className="success-footer-text">
           Your membership is ready. Time to get stronger.

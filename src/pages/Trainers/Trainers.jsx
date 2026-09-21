@@ -1,10 +1,13 @@
 import "./Trainers.css";
 import { useNavigate } from "react-router-dom";
 
-import trainer1 from "../../assets/Trainer1.jpg";
+// import trainer1 from "../../assets/Trainer1.jpg";
 import trainer2 from "../../assets/Trainer2.jpg";
 import trainer3 from "../../assets/Trainer3.jpg";
-import trainer4 from "../../assets/Trainer4.jpg";
+// import trainer4 from "../../assets/Trainer4.jpg";
+import trainer5 from "../../assets/Trainer5.jpg";
+import trainer6 from "../../assets/Trainer6.jpg";
+import trainer7 from "../../assets/trainer7.jpg";
 
 function Trainers() {
   const navigate = useNavigate();
@@ -14,7 +17,7 @@ function Trainers() {
       name: "Alex Carter",
       role: "STRENGTH & CONDITIONING",
       experience: "8+ YEARS EXPERIENCE",
-      image: trainer1,
+      image: trainer5,
       specialty: "Strength Training",
     },
     {
@@ -28,14 +31,14 @@ function Trainers() {
       name: "Ryan Cooper",
       role: "PERFORMANCE COACH",
       experience: "10+ YEARS EXPERIENCE",
-      image: trainer3,
+      image: trainer7,
       specialty: "Athletic Performance",
     },
     {
       name: "Sophia Martin",
       role: "MOBILITY & FITNESS",
       experience: "7+ YEARS EXPERIENCE",
-      image: trainer4,
+      image: trainer6,
       specialty: "Mobility",
     },
   ];

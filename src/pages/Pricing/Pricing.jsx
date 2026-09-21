@@ -3,10 +3,12 @@ import { useNavigate } from "react-router-dom";
 
 function Pricing() {
   const navigate = useNavigate();
+
   const plans = [
     {
       name: "STARTER",
       price: "₹499",
+      amount: 499,
       period: "/ month",
       description: "Everything you need to start your fitness journey.",
       features: [
@@ -19,6 +21,7 @@ function Pricing() {
     {
       name: "PRO",
       price: "₹999",
+      amount: 999,
       period: "/ month",
       description: "For members who are serious about making progress.",
       popular: true,
@@ -33,6 +36,7 @@ function Pricing() {
     {
       name: "ELITE",
       price: "₹1,999",
+      amount: 1999,
       period: "/ month",
       description: "The complete FITFORGE experience with expert coaching.",
       features: [
@@ -44,6 +48,14 @@ function Pricing() {
       ],
     },
   ];
+
+  const handleSelectPlan = (plan) => {
+    navigate("/checkout", {
+      state: {
+        plan,
+      },
+    });
+  };
 
   return (
     <div className="pricing-page">
@@ -107,7 +119,7 @@ function Pricing() {
 
               <button
                 className="pricing-button"
-                onClick={() => navigate("/checkout")}
+                onClick={() => handleSelectPlan(plan)}
               >
                 Get Started
               </button>

@@ -1,26 +1,59 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Checkout.css";
 
 function Checkout() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [loading, setLoading] = useState(false);
 
-  const plan = {
-    name: "PRO",
-    price: "₹999",
-    amount: 999,
-    period: "/ month",
-    description: "For members who are serious about making progress.",
-    features: [
-      "All training programs",
-      "Advanced progress tracking",
-      "Personalized recommendations",
-      "Nutrition guidance",
-      "Trainer support",
-    ],
-  };
+  // Get selected plan from Pricing page
+  const selectedPlan = location.state?.plan;
+
+  // If user directly opens /checkout without selecting a plan
+  if (!selectedPlan) {
+    return (
+      <div className="checkout-page">
+        <header className="checkout-header">
+          <div className="checkout-logo">
+            FIT<span>FORGE</span>
+          </div>
+
+          <div className="secure-checkout">
+            <span>🔒</span>
+            Secure Checkout
+          </div>
+        </header>
+
+        <main className="checkout-container">
+          <div className="checkout-heading">
+            <p className="eyebrow">MEMBERSHIP</p>
+
+            <h1>
+              NO PLAN
+              <br />
+              <span>SELECTED.</span>
+            </h1>
+
+            <p>
+              Please select a membership plan before continuing to checkout.
+            </p>
+
+            <button
+              className="pay-button"
+              onClick={() => navigate("/pricing")}
+              style={{ marginTop: "30px" }}
+            >
+              Choose a Plan
+            </button>
+          </div>
+        </main>
+      </div>
+    );
+  }
+
+  const plan = selectedPlan;
 
   const [customer, setCustomer] = useState({
     name: "",
@@ -67,7 +100,7 @@ function Checkout() {
     setLoading(true);
 
     try {
-      // 1. Load Razorpay Checkout
+      // 1. Load Razorpay
       const razorpayLoaded = await loadRazorpay();
 
       if (!razorpayLoaded) {
@@ -76,10 +109,9 @@ function Checkout() {
         return;
       }
 
-      // 2. Create order on our backend
+      // 2. Create order on backend
       const orderResponse = await fetch(
-        // "http://localhost:5000/api/payment/create-order",
-        "https://fitforge-cilr.onrender.com/api/payment/create-order",
+        `${import.meta.env.VITE_API_URL}/api/payment/create-order`,
         {
           method: "POST",
           headers: {
@@ -98,9 +130,9 @@ function Checkout() {
         throw new Error(orderData.message || "Unable to create payment order");
       }
 
-      // 3. Razorpay Checkout options
+      // 3. Razorpay checkout options
       const options = {
-        key: "rzp_test_TWI1gmd1gCYe9g",
+        key: import.meta.env.VITE_RAZORPAY_KEY_ID,
 
         amount: orderData.order.amount,
 
@@ -122,12 +154,11 @@ function Checkout() {
           color: "#b1f800",
         },
 
+        // 4. Payment success
         handler: async function (response) {
           try {
-            // 4. Send payment details to backend
             const verifyResponse = await fetch(
-              // "http://localhost:5000/api/payment/verify",
-              "https://fitforge-cilr.onrender.com/api/payment/verify",
+              `${import.meta.env.VITE_API_URL}/api/payment/verify`,
               {
                 method: "POST",
                 headers: {
@@ -135,35 +166,32 @@ function Checkout() {
                 },
                 body: JSON.stringify({
                   razorpay_order_id: response.razorpay_order_id,
+
                   razorpay_payment_id: response.razorpay_payment_id,
+
                   razorpay_signature: response.razorpay_signature,
                 }),
               },
             );
 
             const verifyData = await verifyResponse.json();
-
             if (!verifyResponse.ok || !verifyData.success) {
               alert("Payment verification failed.");
               return;
             }
 
-            // 5. Payment verified successfully
-            navigate("/payment-success", {
-              state: {
-                plan: plan.name,
-                price: plan.price,
-                paymentId: response.razorpay_payment_id,
-                orderId: response.razorpay_order_id,
-                customerName: customer.name,
-              },
-            });
+            // Payment verified successfully
+            navigate("/");
           } catch (error) {
             console.error("Verification error:", error);
+
             alert("Unable to verify payment.");
+
+            setLoading(false);
           }
         },
 
+        // 6. Razorpay modal closed
         modal: {
           ondismiss: function () {
             setLoading(false);
@@ -171,9 +199,10 @@ function Checkout() {
         },
       };
 
-      // 6. Open Razorpay Checkout
+      // 7. Open Razorpay
       const razorpay = new window.Razorpay(options);
 
+      // 8. Payment failed
       razorpay.on("payment.failed", function (response) {
         console.error("Payment failed:", response.error);
 
@@ -290,7 +319,6 @@ function Checkout() {
             <div className="checkout-section-label">PAYMENT DETAILS</div>
 
             {/* Full Name */}
-
             <div className="form-group">
               <label>FULL NAME</label>
 
@@ -304,7 +332,6 @@ function Checkout() {
             </div>
 
             {/* Email + Phone */}
-
             <div className="form-row">
               <div className="form-group">
                 <label>EMAIL ADDRESS</label>
@@ -332,7 +359,6 @@ function Checkout() {
             </div>
 
             {/* Payment Information */}
-
             <div className="payment-info-box">
               <div className="payment-info-icon">🔒</div>
 
@@ -347,19 +373,22 @@ function Checkout() {
             </div>
 
             {/* Pay Button */}
-
             <button
-              className="pay-button"
+              className={`pay-button ${loading ? "payment-loading" : ""}`}
               onClick={handlePayment}
               disabled={loading}
             >
-              {loading
-                ? "Processing..."
-                : `Pay ${plan.price} & Start Membership`}
+              {loading ? (
+                <span className="payment-loader-content">
+                  <span className="payment-spinner"></span>
+                  <span>Processing Payment...</span>
+                </span>
+              ) : (
+                `Pay ${plan.price} & Start Membership`
+              )}
             </button>
 
             {/* Security */}
-
             <div className="payment-security">
               <span>🔒</span>
 
@@ -370,7 +399,6 @@ function Checkout() {
             </div>
 
             {/* Trust */}
-
             <div className="trust-items">
               <div>
                 <span>✓</span>

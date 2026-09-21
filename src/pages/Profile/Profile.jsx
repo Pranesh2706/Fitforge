@@ -54,11 +54,14 @@ function Profile() {
         // FETCH USER
         // =========================
 
-        const userResponse = await fetch("http://localhost:5000/api/auth/me", {
-          headers: {
-            Authorization: `Bearer ${token}`,
+        const userResponse = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/auth/me`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           },
-        });
+        );
 
         const userData = await userResponse.json();
 
@@ -77,7 +80,7 @@ function Profile() {
         // =========================
 
         const statsResponse = await fetch(
-          "http://localhost:5000/api/dashboard/stats",
+          `${import.meta.env.VITE_API_URL}/api/dashboard/stats`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -136,16 +139,19 @@ function Profile() {
         return;
       }
 
-      const response = await fetch("http://localhost:5000/api/auth/profile", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/auth/profile`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            name: editName.trim(),
+          }),
         },
-        body: JSON.stringify({
-          name: editName.trim(),
-        }),
-      });
+      );
 
       const data = await response.json();
 

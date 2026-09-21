@@ -97,7 +97,7 @@ function Home() {
             </div>
 
             {/* PROGRESS CARD */}
-            <div className="progress-card">
+            {/* <div className="progress-card">
               <div className="progress-card-top">
                 <div>
                   <span>YOUR PROGRESS</span>
@@ -130,7 +130,7 @@ function Home() {
                 <span>S</span>
                 <span>S</span>
               </div>
-            </div>
+            </div> */}
 
             {/* MOTIVATION */}
             <div className="image-quote">

@@ -498,7 +498,6 @@ app.post("/api/workout-progress", authMiddleware, async (req, res) => {
     });
   }
 });
-
 // =========================
 // CREATE PAYMENT ORDER
 // =========================
@@ -507,38 +506,85 @@ app.post("/api/payment/create-order", async (req, res) => {
   try {
     const { amount, plan } = req.body;
 
-    if (!amount || !plan) {
+    // Validate input
+    if (amount === undefined || amount === null || !plan) {
       return res.status(400).json({
         success: false,
         message: "Amount and plan are required",
       });
     }
 
+    const numericAmount = Number(amount);
+
+    if (!Number.isFinite(numericAmount) || numericAmount <= 0) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid payment amount",
+      });
+    }
+
+    // Razorpay amount must be at least ₹1 = 100 paise
+    if (numericAmount < 1) {
+      return res.status(400).json({
+        success: false,
+        message: "Minimum payment amount is ₹1",
+      });
+    }
+
+    // Make sure Razorpay credentials exist
+    if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
+      console.error("Razorpay environment variables are missing");
+
+      return res.status(500).json({
+        success: false,
+        message: "Razorpay configuration is missing",
+      });
+    }
+
     const options = {
-      amount: Number(amount) * 100,
+      amount: Math.round(numericAmount * 100),
       currency: "INR",
       receipt: `fitforge_${Date.now()}`,
       notes: {
-        plan,
+        plan: String(plan),
       },
     };
 
+    console.log("Creating Razorpay order:", {
+      amount: options.amount,
+      currency: options.currency,
+      plan: options.notes.plan,
+    });
+
     const order = await razorpay.orders.create(options);
 
-    res.json({
+    console.log("Razorpay order created:", order.id);
+
+    return res.status(200).json({
       success: true,
       order,
     });
   } catch (error) {
-    console.error("Order creation error:", error);
+    console.error("Order creation error:", {
+      statusCode: error.statusCode,
+      code: error.error?.code,
+      description: error.error?.description,
+      message: error.message,
+    });
 
-    res.status(500).json({
+    if (error.statusCode === 401) {
+      return res.status(401).json({
+        success: false,
+        message: "Razorpay authentication failed. Check Test API credentials.",
+      });
+    }
+
+    return res.status(500).json({
       success: false,
       message: "Unable to create payment order",
     });
   }
 });
-
 // =========================
 // VERIFY PAYMENT
 // =========================
@@ -548,19 +594,58 @@ app.post("/api/payment/verify", (req, res) => {
     const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
       req.body;
 
+    // Validate required fields
+    if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature) {
+      return res.status(400).json({
+        success: false,
+        message: "Payment verification details are missing",
+      });
+    }
+
+    if (!process.env.RAZORPAY_KEY_SECRET) {
+      console.error("Razorpay secret key is missing");
+
+      return res.status(500).json({
+        success: false,
+        message: "Razorpay configuration is missing",
+      });
+    }
+
     const generatedSignature = crypto
       .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
       .update(`${razorpay_order_id}|${razorpay_payment_id}`)
       .digest("hex");
 
-    if (generatedSignature !== razorpay_signature) {
+    // Check signature length before timingSafeEqual
+    if (generatedSignature.length !== razorpay_signature.length) {
+      console.error("Invalid Razorpay signature length");
+
       return res.status(400).json({
         success: false,
         message: "Payment verification failed",
       });
     }
 
-    res.json({
+    const isValid = crypto.timingSafeEqual(
+      Buffer.from(generatedSignature, "utf8"),
+      Buffer.from(razorpay_signature, "utf8"),
+    );
+
+    if (!isValid) {
+      console.error("Payment verification failed:", razorpay_payment_id);
+
+      return res.status(400).json({
+        success: false,
+        message: "Payment verification failed",
+      });
+    }
+
+    console.log("========================================");
+    console.log("Payment verified successfully:", razorpay_payment_id);
+    console.log("Order ID:", razorpay_order_id);
+    console.log("========================================");
+
+    return res.json({
       success: true,
       message: "Payment verified successfully",
       paymentId: razorpay_payment_id,
@@ -569,13 +654,12 @@ app.post("/api/payment/verify", (req, res) => {
   } catch (error) {
     console.error("Verification error:", error);
 
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: "Payment verification failed",
     });
   }
 });
-
 // =========================
 // START SERVER
 // =========================

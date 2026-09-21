@@ -11,6 +11,7 @@ import workout7 from "../../assets/workout7.jpg";
 import workout8 from "../../assets/workout8.jpg";
 import workout9 from "../../assets/workout9.jpg";
 import workout10 from "../../assets/workout10.jpg";
+import workout12 from "../../assets/workout12.jpg";
 function Programs() {
   const navigate = useNavigate();
   const programs = [
@@ -18,7 +19,7 @@ function Programs() {
       id: "muscle-builder",
       number: "01",
       title: "Muscle Builder",
-      image: workout1,
+      image: workout12,
       description:
         "Build lean muscle, increase strength, and develop a consistent training.",
       duration: "12 Weeks",

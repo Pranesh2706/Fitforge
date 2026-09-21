@@ -700,3 +700,74 @@
     font-size: 40px;
   }
 }
+/* =========================
+   PAYMENT LOADING ANIMATION
+========================= */
+
+.payment-loading {
+  cursor: wait;
+  position: relative;
+  overflow: hidden;
+  opacity: 0.95;
+}
+
+.payment-loader-content {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Spinning Loader */
+
+.payment-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-top-color: #b1f800;
+  border-right-color: #b1f800;
+  border-radius: 50%;
+  animation: paymentSpin 0.7s linear infinite;
+}
+
+/* Subtle button glow */
+
+.payment-loading::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.12),
+    transparent
+  );
+  animation: paymentShimmer 1.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes paymentSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes paymentShimmer {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 150%;
+  }
+}
+
+/* Prevent button hover transform while loading */
+
+.payment-loading:hover {
+  transform: none;
+  cursor: wait;
+}
