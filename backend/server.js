@@ -467,6 +467,37 @@ app.post("/api/workout-progress", authMiddleware, async (req, res) => {
       });
     }
 
+    // Prevent accidental duplicate completion
+    // for the same workout within 5 minutes
+    const duplicateCheck = await pool.query(
+      `
+      SELECT
+        id,
+        user_id,
+        workout_name,
+        duration,
+        calories,
+        completed_at
+      FROM workout_progress
+      WHERE user_id = $1
+        AND workout_name = $2
+        AND duration = $3
+        AND calories = $4
+        AND completed_at >= CURRENT_TIMESTAMP - INTERVAL '5 minutes'
+      ORDER BY completed_at DESC
+      LIMIT 1
+      `,
+      [userId, workoutName, duration, calories],
+    );
+
+    if (duplicateCheck.rows.length > 0) {
+      return res.status(409).json({
+        success: false,
+        message: "This workout was already completed recently",
+        workout: duplicateCheck.rows[0],
+      });
+    }
+
     const result = await pool.query(
       `
       INSERT INTO workout_progress
