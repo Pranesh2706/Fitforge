@@ -483,7 +483,7 @@ app.post("/api/workout-progress", authMiddleware, async (req, res) => {
         AND workout_name = $2
         AND duration = $3
         AND calories = $4
-        AND completed_at >= CURRENT_TIMESTAMP - INTERVAL '5 minutes'
+        AND completed_at::date = CURRENT_DATE
       ORDER BY completed_at DESC
       LIMIT 1
       `,
