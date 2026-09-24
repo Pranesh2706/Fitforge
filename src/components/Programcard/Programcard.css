@@ -138,26 +138,18 @@
 .program-card-button {
   width: 100%;
   min-height: 52px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 15px 25px;
-
   border: none;
   border-radius: 8px;
-
   background: #b1f800;
   color: #080808;
-
   font-family: inherit;
-
-  font-size: 13px;
-  font-weight: 800;
-
+  font-size: 15px;
+  font-weight: 900;
   cursor: pointer;
-
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease,
@@ -166,8 +158,8 @@
 
 .program-card-button span {
   font-size: 20px;
+  font-weight: 900;
   line-height: 1;
-
   transition: transform 0.25s ease;
 }
 

@@ -789,6 +789,12 @@ function ProgramDetails() {
       const data = await response.json();
 
       if (!response.ok) {
+        if (response.status === 409) {
+          setCompletedWorkout(true);
+          setCompletionMessage("Workout already completed recently");
+          return;
+        }
+
         throw new Error(data.message || "Unable to complete workout");
       }
 
@@ -796,6 +802,13 @@ function ProgramDetails() {
       setCompletionMessage("Workout completed successfully!");
     } catch (error) {
       console.error("Workout completion error:", error);
+
+      if (error.message === "This workout was already completed recently") {
+        setCompletedWorkout(true);
+        setCompletionMessage("Workout already completed recently");
+        return;
+      }
+
       setCompletionMessage(error.message || "Unable to complete workout");
     } finally {
       setIsCompleting(false);

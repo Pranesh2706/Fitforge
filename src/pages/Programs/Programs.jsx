@@ -126,13 +126,12 @@ function Programs() {
             <span className="stat-number">
               500<span>+</span>
             </span>
+
             <span className="stat-label">WORKOUTS</span>
           </div>
 
           <div className="stat-description">
-            Structured training
-            <br />
-            for every level.
+            <span>Structured training</span> <span>for every level.</span>
           </div>
         </div>
 

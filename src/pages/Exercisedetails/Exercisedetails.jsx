@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import "./Exercisedetails.css";
+import { useNavigate } from "react-router-dom";
 
 const exerciseData = {
   // =====================================================
@@ -1013,6 +1014,7 @@ function ExerciseDetails() {
   const { exerciseId } = useParams();
 
   const exercise = exerciseData[exerciseId];
+  const navigate = useNavigate();
 
   if (!exercise) {
     return (
@@ -1201,9 +1203,7 @@ function ExerciseDetails() {
         <button
           className="exercise-complete-button"
           type="button"
-          onClick={() => {
-            console.log("Exercise selected:", exerciseId);
-          }}
+          onClick={() => navigate("/programs")}
         >
           Start Exercise →
         </button>

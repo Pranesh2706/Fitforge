@@ -112,7 +112,7 @@ function Footer() {
 
           <a href="mailto:hello@fitforge.com">hello@fitforge.com</a>
 
-          <a href="tel:+919876543210">+91 98765 43210</a>
+          <a href="tel:+918056451650">+91 8056451650</a>
 
           <p>
             Chennai, Tamil Nadu

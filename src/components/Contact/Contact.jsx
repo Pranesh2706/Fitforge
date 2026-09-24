@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Contact.css";
 
 function Contact() {
@@ -11,6 +11,27 @@ function Contact() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+
+  // =================================
+  // LOAD LOGGED-IN USER DATA
+  // =================================
+  useEffect(() => {
+    const savedUser = localStorage.getItem("fitforge_user");
+
+    if (savedUser) {
+      try {
+        const user = JSON.parse(savedUser);
+
+        setFormData((prev) => ({
+          ...prev,
+          name: user.name || "",
+          email: user.email || "",
+        }));
+      } catch (error) {
+        console.error("Unable to load user data:", error);
+      }
+    }
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -86,7 +107,7 @@ function Contact() {
               <div>
                 <small>CALL US</small>
 
-                <a href="tel:+919876543210">+91 98765 43210</a>
+                <a href="tel:+918056451650">+91 80564 51650</a>
               </div>
             </div>
 

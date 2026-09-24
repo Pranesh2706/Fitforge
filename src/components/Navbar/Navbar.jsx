@@ -73,6 +73,7 @@ function Navbar() {
       <header className="navbar">
         {/* Logo */}
         <div className="logo" onClick={() => navigate("/")}>
+          <img src="/Fitforge-logo.png" />
           FIT<span>FORGE</span>
         </div>
 
