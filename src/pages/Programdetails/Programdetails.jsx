@@ -690,6 +690,7 @@ function ProgramDetails() {
   const [isCompleting, setIsCompleting] = useState(false);
   const [completedWorkout, setCompletedWorkout] = useState(false);
   const [completionMessage, setCompletionMessage] = useState("");
+  const [completionMessageType, setCompletionMessageType] = useState("");
 
   /*
     Reset the selected day whenever the selected week/program changes.
@@ -792,6 +793,7 @@ function ProgramDetails() {
         if (response.status === 409) {
           setCompletedWorkout(true);
           setCompletionMessage("Workout already completed recently");
+          setCompletionMessageType("warning");
           return;
         }
 
@@ -800,16 +802,19 @@ function ProgramDetails() {
 
       setCompletedWorkout(true);
       setCompletionMessage("Workout completed successfully!");
+      setCompletionMessageType("success");
     } catch (error) {
       console.error("Workout completion error:", error);
 
       if (error.message === "This workout was already completed recently") {
         setCompletedWorkout(true);
         setCompletionMessage("Workout already completed recently");
+        setCompletionMessageType("warning");
         return;
       }
 
       setCompletionMessage(error.message || "Unable to complete workout");
+      setCompletionMessageType("error");
     } finally {
       setIsCompleting(false);
     }
@@ -987,13 +992,21 @@ function ProgramDetails() {
                   </div>
                 )}
 
-                {completionMessage && (
+                {/* {completionMessage && (
                   <p
                     className={
                       completedWorkout
                         ? "workout-completion-message success"
                         : "workout-completion-message error"
                     }
+                  >
+                    {completionMessage}
+                  </p>
+                )} */}
+
+                {completionMessage && (
+                  <p
+                    className={`workout-completion-message ${completionMessageType}`}
                   >
                     {completionMessage}
                   </p>

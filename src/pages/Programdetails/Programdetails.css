@@ -720,31 +720,28 @@
 /* completion message */
 
 .workout-completion-message {
-  width: 100%;
-
+  width: fit-content;
   margin: 17px 0 0;
-
-  padding: 13px 16px;
-
+  padding: 10px 16px;
   border-radius: 9px;
-
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
 }
-
 .workout-completion-message.success {
   border: 1px solid rgba(182, 255, 0, 0.14);
-
   background: rgba(182, 255, 0, 0.04);
-
   color: #b6ff00;
+}
+
+.workout-completion-message.warning {
+  border: 1px solid rgba(255, 170, 0, 0.18);
+  background: rgba(255, 170, 0, 0.05);
+  color: #ffb000;
 }
 
 .workout-completion-message.error {
   border: 1px solid rgba(255, 92, 92, 0.15);
-
   background: rgba(255, 92, 92, 0.04);
-
   color: #ff7070;
 }
 
@@ -1495,9 +1492,13 @@
   }
 
   .complete-workout-button {
-    width: 100%;
-
-    min-height: 48px;
+    width: auto;
+    min-height: 32px;
+    height: 32px;
+    padding: 0 12px;
+    font-size: 7px;
+    letter-spacing: 0.7px;
+    align-self: flex-start;
   }
 
   /* exercises */
